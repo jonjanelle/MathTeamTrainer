@@ -25,7 +25,7 @@ class ProblemController extends Controller
    * the current session
    */
   private static function loadProblemData($category){
-    $pString = file_get_contents("json/".$category."Dat.json");
+    $pString = file_get_contents("json/".lcfirst($category)."Dat.json");
     Session::put($category,json_decode($pString, true));
   }
 
