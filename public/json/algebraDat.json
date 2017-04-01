@@ -7,7 +7,7 @@
 		"prev":"None",
 		 "name": "Problem 1",
 		 "difficulty":"easy",
-		 "img":"images/algebra/algebraP1.png",
+		 "img":"/images/algebra/algebraP1.png",
 		 "answer": -0.375,
 		 "xp":100
 		},
