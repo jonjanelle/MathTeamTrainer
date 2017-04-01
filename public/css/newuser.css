@@ -1,0 +1,29 @@
+.fade-in {
+  display: none;
+}
+
+.form-box {
+  margin: 0 auto;
+  margin-top:10px;
+  max-width: 70%;
+  max-height: 70%;
+  text-align: center;
+  border: 2px solid #bbc;
+  border-radius: 8px;
+}
+
+.form-body {
+  padding: 10px 25px 10px 25px;
+}
+
+.form-head {
+  font-weight: bolder;
+  font-size: 2em;
+  padding: 10px;
+  letter-spacing: normal;
+  margin-bottom: 15px;
+  background-color: #dff0d8;
+  border: 2px solid #d6e9c6;
+  color: #555;
+  border-radius: 8px 8px 0 0;
+}

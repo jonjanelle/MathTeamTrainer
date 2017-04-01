@@ -1,0 +1,35 @@
+{
+  "name": "Algebra",
+  "problems": [
+		{
+     "id": "ap1",
+     "next":"ap2",
+     "prev":"None",
+		 "name": "Problem 1",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP1.png",
+		 "answer": 5,
+		 "xp":100
+		},
+		{
+     "id":"ap2",
+     "next":"ap3",
+     "prev":"ap1",
+		 "name": "Problem 2",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP2.png",
+		 "answer": 5,
+		 "xp":100
+		},
+		{
+     "id": "ap3",
+     "next":"None",
+     "prev":"ap2",
+		 "name": "Problem 3",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP3.png",
+		 "answer": 5,
+		 "xp":150
+		}
+	]
+}

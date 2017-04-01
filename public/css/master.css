@@ -1,0 +1,100 @@
+/* fonts downloaded from dafont.com */
+@font-face {
+    font-family: 'Fragmentcore';
+    src: url("/fonts/Fragmentcore.otf");
+}
+
+@font-face {
+    font-family: 'Makisupa';
+    src: url("/fonts/MAKISUPA.TTF");
+}
+
+@font-face {
+    font-family: 'WhiteRabbit';
+    font-weight: normal;
+
+    src: url("/fonts/whitrabt.ttf");
+}
+
+@font-face {
+    font-family: 'MathBoredom';
+    font-weight: normal;
+    src: url("/fonts/Mathematics Boredom.ttf");
+}
+
+@font-face {
+    font-family: 'ShoesCenter';
+    font-weight: normal;
+    src: url("/fonts/Shoes center.ttf");
+}
+
+@font-face {
+    font-family: 'Bebas';
+    src: url("/fonts/BEBAS.TTF");
+}
+
+@font-face {
+  font-family: 'ToyBlocks';
+  src: url("/fonts/K26ToyBlocks123.ttf");
+}
+
+@font-face {
+  font-family: 'CalculusSans';
+  src: url("/fonts/CalculusSans.ttf");
+}
+
+body {
+  background-image: url("/images/triangular.png");
+  background-repeat: repeat;
+  background-size: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+
+img {
+  max-width:100%;
+  max-height:100%;
+}
+
+.alert {
+  margin: 0 auto;
+  padding:0;
+  letter-spacing: 5px;
+  color: #1414AA;
+}
+
+.navbar-brand {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.header {
+  font-family: 'CalculusSans';
+  margin-bottom: 20px;
+  font-size: 3.5em;
+  text-align: center;
+  letter-spacing: 5px;
+  background-color: #558;
+  color: #f7f7f7;
+}
+
+/*Hover/mouse leave box shadow changes*/
+.shadow-transition {
+  transition: box-shadow 1s ease;
+  background-color: rgba(240,240,240,.9);
+  box-shadow: none;
+}
+.shadow-transition:hover {
+  transition: box-shadow .3s ease;
+  box-shadow: 0 5px 10px 3px rgba(100,100,100,.7);
+}
+
+.back-panel {
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 20px 0 0 0;
+  background-color: #FCFCFC;
+  width: 90vw;
+  height: 100vh;
+  box-shadow: 0 5px 15px 3px rgba(50,50,50,.7);
+}
