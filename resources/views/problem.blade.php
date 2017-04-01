@@ -41,7 +41,7 @@
   </div> <!-- end header -->
   <div class="pad-20">
     <div class="img-box light-shadowbox">
-      <img src={{asset($problem['img'])}} alt="problem image">
+      <img src={{$problem['img']}} alt="problem image">
     </div>
 
     <div class="answer-form-div">
