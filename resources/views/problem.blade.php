@@ -16,6 +16,7 @@
   -->
 
   <div class="header">
+    
     @if ($problem['prev']!='None')
       <div id="left-link">
         <a href="/problems/{{$category}}/{{$problem['prev']}}">
@@ -39,7 +40,7 @@
     </div>
   </div> <!-- end header -->
   <div class="pad-20">
-    <div class="img-box">
+    <div class="img-box light-shadowbox">
       <img src="{{$problem['img']}}" alt="problem image">
     </div>
 

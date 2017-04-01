@@ -12,7 +12,7 @@
     <div class="row">
     @foreach ($problems['problems'] as $problem)
       <a href="/problems/{{$category}}/{{$problem['id']}}">
-        <div class="col col-md-4">
+        <div class="col col-md-4 col-sm-6 col-xs-12">
           <div class="problem-box shadow-transition">
             <div class="problem-box-header">
               {{$problem['name']}}

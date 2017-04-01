@@ -2,34 +2,144 @@
   "name": "Algebra",
   "problems": [
 		{
-     "id": "ap1",
-     "next":"ap2",
-     "prev":"None",
+		"id": "ap1",
+		"next":"ap2",
+		"prev":"None",
 		 "name": "Problem 1",
 		 "difficulty":"easy",
 		 "img":"/images/algebra/algebraP1.png",
-		 "answer": 5,
+		 "answer": -0.375,
 		 "xp":100
 		},
 		{
-     "id":"ap2",
-     "next":"ap3",
-     "prev":"ap1",
+		"id":"ap2",
+		"next":"ap3",
+		"prev":"ap1",
 		 "name": "Problem 2",
 		 "difficulty":"easy",
 		 "img":"/images/algebra/algebraP2.png",
-		 "answer": 5,
+		 "answer": -72,
 		 "xp":100
 		},
 		{
-     "id": "ap3",
-     "next":"None",
-     "prev":"ap2",
+		"id": "ap3",
+		"next":"ap4",
+		"prev":"ap2",
 		 "name": "Problem 3",
 		 "difficulty":"easy",
 		 "img":"/images/algebra/algebraP3.png",
-		 "answer": 5,
+		 "answer": -0.25,
 		 "xp":150
+		},
+		{
+		"id":"ap4",
+		"next":"ap5",
+		"prev":"ap3",
+		 "name": "Problem 4",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP4.png",
+		 "answer": 30,
+		 "xp":100
+		},
+		{
+		 "id":"ap5",
+		 "next":"ap6",
+		 "prev":"ap4",
+		 "name": "Problem 5",
+		 "difficulty":"medium",
+		 "img":"/images/algebra/algebraP5.png",
+		 "answer": 130,
+		 "xp":200
+		},
+		{
+		 "id":"ap6",
+		 "next":"ap7",
+		 "prev":"ap5",
+		 "name": "Problem 6",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP6.png",
+		 "answer": 15,
+		 "xp":150
+		},
+		{
+		 "id":"ap7",
+		 "next":"ap8",
+		 "prev":"ap6",
+		 "name": "Problem 7",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP7.png",
+		 "answer": 30,
+		 "xp":100
+		},
+		{
+		 "id":"ap8",
+		 "next":"ap9",
+		 "prev":"ap7",
+		 "name": "Problem 8",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP8.png",
+		 "answer": 14.81,
+		 "xp":150
+		},
+		{
+		 "id":"ap9",
+		 "next":"ap10",
+		 "prev":"ap8",
+		 "name": "Problem 9",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP9.png",
+		 "answer": 10,
+		 "xp":100
+		},
+		{
+		 "id":"ap10",
+		 "next":"ap11",
+		 "prev":"ap9",
+		 "name": "Problem 10",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP10.png",
+		 "answer": 3.75,
+		 "xp":100
+		},
+		{
+		 "id":"ap11",
+		 "next":"ap12",
+		 "prev":"ap10",
+		 "name": "Problem 11",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP11.png",
+		 "answer": 1800,
+		 "xp":150
+		},
+		{
+		 "id":"ap12",
+		 "next":"ap13",
+		 "prev":"ap11",
+		 "name": "Problem 12",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP12.png",
+		 "answer": 11,
+		 "xp":100
+		},
+		{
+		 "id":"ap13",
+		 "next":"ap14",
+		 "prev":"ap12",
+		 "name": "Problem 13",
+		 "difficulty":"easy",
+		 "img":"/images/algebra/algebraP13.png",
+		 "answer": -137,
+		 "xp":150
+		},
+		{
+		 "id":"ap14",
+		 "next":"None",
+		 "prev":"ap13",
+		 "name": "Problem 14",
+		 "difficulty":"medium",
+		 "img":"/images/algebra/algebraP14.png",
+		 "answer": 6,
+		 "xp":200
 		}
 	]
 }

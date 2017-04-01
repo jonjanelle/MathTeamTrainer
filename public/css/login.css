@@ -2,6 +2,7 @@ form {
   margin-bottom: 30px;
 }
 
+
 .form-box {
   margin: 0 auto;
   max-width: 60vw;
@@ -25,4 +26,30 @@ form {
   border: 2px solid #d6e9c6;
   color: #555;
   border-radius: 8px 8px 0 0;
+}
+
+#login-form {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
+}
+
+#site-desc {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  font-size: 1.5em;
+  color: #335;
+  margin-bottom: 10px;
+  font-family: 'CalculusSans';
+}
+
+.carousel-div {
+  margin: 0 auto;
+  width: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #DDD;
+  text-align: center;
 }

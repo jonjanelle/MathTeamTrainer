@@ -1,4 +1,4 @@
-<div class="form-box shadow-transition">
+<div class="form-box shadow-transition" id="login-form">
   <div class="form-head">
     <span class="glyphicon glyphicon-user"></span> Login
   </div>
