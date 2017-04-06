@@ -23,6 +23,7 @@ class ProblemController extends Controller
   /*
    * Store the problem set for a specified category to
    * the current session
+   * $category - the all-lowercase category name (algebra, geometry, etc...)
    */
   private static function loadProblemData($category){
     $pString = file_get_contents("json/".lcfirst($category)."Dat.json");
@@ -43,7 +44,8 @@ class ProblemController extends Controller
       foreach ($pData['problems'] as $p) {
         if ($p['id']==$pid){
           return view('problem')->with(['problem'=>$p,
-                                        'category'=>ucfirst($category)]);
+                                        'category'=>ucfirst($category),
+                                        'feedback'=>false]);
         }
       }
 
@@ -54,4 +56,28 @@ class ProblemController extends Controller
                                         'category'=>$category]);
   }
 
+  /*
+   * Validate user response
+   * $category : problem category
+   * $pid : Problem id code
+   */
+  public function checkResponse(Request $request, $category,$pid) {
+    $pData = Session::get($category);
+    $correct = false;
+    $userResponse = $request->input("answer-input");
+    foreach ($pData['problems'] as $p) {
+      if ($p['id']==$pid){
+        if ($p['answer']==floatval($userResponse)){
+          $correct=true;
+        }
+        return view('problem')->with(['problem'=>$p,
+                                      'category'=>ucfirst($category),
+                                      'feedback'=>true,
+                                      'correct'=>$correct,
+                                      'userAns'=>$userResponse]);
+      }
+    }
+    return view('problemlist')->with(['problems'=>$pData,
+                                      'category'=>$category]);
+  }
 }

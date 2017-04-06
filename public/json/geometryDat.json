@@ -1,0 +1,85 @@
+{
+  "name": "Geometry",
+  "problems": [
+		{
+		"id": "gp1",
+		"next":"gp2",
+		"prev":"None",
+		 "name": "Problem 1",
+		 "difficulty":"easy",
+		 "img":"/images/geometry/geometryP1.PNG",
+		 "answer": 88,
+		 "xp":100
+		},
+		{
+		"id":"gp2",
+		"next":"gp3",
+		"prev":"gp1",
+		 "name": "Problem 2",
+		 "difficulty":"easy",
+		 "img":"/images/geometry/geometryP2.PNG",
+		 "answer": 71,
+		 "xp":100
+		},
+		{
+		"id": "gp3",
+		"next":"gp4",
+		"prev":"gp2",
+		 "name": "Problem 3",
+		 "difficulty":"easy",
+		 "img":"/images/geometry/geometryP3.PNG",
+		 "answer": 4.8125,
+		 "xp":150
+		},
+		{
+		"id":"gp4",
+		"next":"gp5",
+		"prev":"gp3",
+		 "name": "Problem 4",
+		 "difficulty":"easy",
+		 "img":"/images/geometry/geometryP4.PNG",
+		 "answer": 216,
+		 "xp":100
+		},
+		{
+		 "id":"gp5",
+		 "next":"gp6",
+		 "prev":"gp4",
+		 "name": "Problem 5",
+		 "difficulty":"medium",
+		 "img":"/images/geometry/geometryP5.PNG",
+		 "answer": 22.5,
+		 "xp":200
+		},
+		{
+		 "id":"gp6",
+		 "next":"gp7",
+		 "prev":"gp5",
+		 "name": "Problem 6",
+		 "difficulty":"easy",
+		 "img":"/images/geometry/geometryP6.PNG",
+		 "answer": 24,
+		 "xp":150
+		},
+		{
+		 "id":"gp7",
+		 "next":"gp8",
+		 "prev":"gp6",
+		 "name": "Problem 7",
+		 "difficulty":"easy",
+		 "img":"/images/geometry/geometryP7.PNG",
+		 "answer": 26,
+		 "xp":100
+		},
+		{
+		 "id":"gp8",
+		 "next":"None",
+		 "prev":"gp7",
+		 "name": "Problem 8",
+		 "difficulty":"medium",
+		 "img":"/images/geometry/geometryP8.PNG",
+		 "answer": 20,
+		 "xp":200
+		}
+	]
+}

@@ -17,5 +17,6 @@ Route::post('/login', 'LoginController@validateLogin');
 Route::get('/newuser','LoginController@newUser');
 
 //Problem listing and viewing routes
-Route::get('/problems/{category}','ProblemController@index'); 
+Route::get('/problems/{category}','ProblemController@index');
 Route::get('/problems/{category}/{pid}','ProblemController@show'); //pid = problem id
+Route::post('/problems/{category}/{pid}/check','ProblemController@checkResponse');
