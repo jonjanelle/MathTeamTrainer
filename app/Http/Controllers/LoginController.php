@@ -10,7 +10,8 @@ class LoginController extends Controller
   //Show main login page.
   //To do: check if user already logged in, redirect appropriately if true
   public function index() {
-      return view('login')->with(['title'=>'Login']);
+      return view('auth.login');
+    //  return view('login')->with(['title'=>'Login']);
   }
 
    //Show the new user creation form

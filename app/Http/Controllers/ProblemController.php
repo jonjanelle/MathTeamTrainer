@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use DB;
 
 class ProblemController extends Controller
 {
   /*
    * Get problem listing view for selected category
    */
-  public function index($category) {
-    if (!Session::has($category)) {
-      $this->loadProblemData($category);
-    }
-
+  public function index($category, $sortCat='xp', $sortOrder="ASC") {
+    $this->loadProblemData($category,$sortCat,$sortOrder);
     $pData = Session::get($category);
     return view('problemlist')->with(['problems'=>$pData,
-                                      'category'=>$category]);
+                                      'category'=>$category,
+                                      'sortCat'=>$sortCat,
+                                      'sortOrder'=>$sortOrder]);
   }
 
   /*
@@ -25,10 +25,14 @@ class ProblemController extends Controller
    * the current session
    * $category - the all-lowercase category name (algebra, geometry, etc...)
    */
-  private static function loadProblemData($category){
-    $pString = file_get_contents("json/".lcfirst($category)."Dat.json");
-    Session::put($category,json_decode($pString, true));
+  private static function loadProblemData($category, $sortCat="xp",$order="ASC"){
+    $data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
+    Session::remove($category);
+    Session::put($category, $data);
   }
+
+
+
 
   /*
    * View a problem from a given $category with
@@ -41,11 +45,13 @@ class ProblemController extends Controller
 
       $pData = Session::get($category);
 
-      foreach ($pData['problems'] as $p) {
-        if ($p['id']==$pid){
+      foreach ($pData as $p) {
+        if ($p->id==$pid){
           return view('problem')->with(['problem'=>$p,
-                                        'category'=>ucfirst($category),
-                                        'feedback'=>false]);
+                                        'category'=>$category,
+                                        'feedback'=>false,
+                                        'next'=>'None',
+                                        'prev'=>'None']);
         }
       }
 
@@ -61,20 +67,26 @@ class ProblemController extends Controller
    * $category : problem category
    * $pid : Problem id code
    */
-  public function checkResponse(Request $request, $category,$pid) {
+  public function checkResponse(Request $request, $category, $pid) {
+    if (!Session::has($category)) { //load problem data if needed
+      $this->loadProblemData($category);
+    }
+
     $pData = Session::get($category);
     $correct = false;
     $userResponse = $request->input("answer-input");
-    foreach ($pData['problems'] as $p) {
-      if ($p['id']==$pid){
-        if ($p['answer']==floatval($userResponse)){
+
+    foreach ($pData as $p) {
+      if ($p->id==$pid){
+        if ($p->answer==floatval($userResponse)){
           $correct=true;
         }
-        return view('problem')->with(['problem'=>$p,
-                                      'category'=>ucfirst($category),
+        return view('problem')->with(['problem'=> $p,
                                       'feedback'=>true,
                                       'correct'=>$correct,
-                                      'userAns'=>$userResponse]);
+                                      'userAns'=>$userResponse,
+                                      'next'=>'None',
+                                      'prev'=>'None']);
       }
     }
     return view('problemlist')->with(['problems'=>$pData,

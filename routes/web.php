@@ -16,7 +16,21 @@ Route::get('/', 'LoginController@index');
 Route::post('/login', 'LoginController@validateLogin');
 Route::get('/newuser','LoginController@newUser');
 
-//Problem listing and viewing routes
-Route::get('/problems/{category}','ProblemController@index');
-Route::get('/problems/{category}/{pid}','ProblemController@show'); //pid = problem id
-Route::post('/problems/{category}/{pid}/check','ProblemController@checkResponse');
+//Routes for viewing individual problem
+//These must be positioned before listing route!
+Route::get('/problems/{category}/problem/{pid}','ProblemController@show'); //pid = problem id
+Route::post('/problems/{category}/problem/{pid}/check','ProblemController@checkResponse');
+
+//Routes for viewing problem listing
+Route::get('/problems/{category}/{sortCat?}/{sortOrder?}','ProblemController@index');
+
+
+
+
+
+//Temp route for moving json data to problem database
+//Route::get("/datamove","DataUpdate@move");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

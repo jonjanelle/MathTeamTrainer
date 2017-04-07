@@ -36,11 +36,11 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Problems <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/problems/algebra">Algebra</a></li>
-                <li><a href="/problems/geometry">Geometry</a></li>
-                <li><a href="/problems/ratio">Ratio and Proportion</a></li>
-                <li><a href="/problems/sequences">Sequences and Series</a></li>
-                <li><a href="/problems/trig">Trigonometry</a></li>
+                <li><a href="/problems/Algebra">Algebra</a></li>
+                <li><a href="/problems/Geometry">Geometry</a></li>
+                <li><a href="/problems/Ratio">Ratio and Proportion</a></li>
+                <li><a href="/problems/Sequences">Sequences and Series</a></li>
+                <li><a href="/problems/Trig">Trigonometry</a></li>
               </ul>
             </li><!--end dropdown-->
             <li><a href="#">Leaderboard</a></li>
