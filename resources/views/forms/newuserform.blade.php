@@ -15,16 +15,16 @@
             </span>
         @endif
         <label for="email-input">Email address</label>
-        <input type="email" class="form-control" id="email-input" name="email" placeholder="Email" required autofocus>
+        <input type="email" class="form-control" id="email-input" name="email" placeholder="Email" required>
         @if ($errors->has('email'))
             <span class="help-block">
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
         @endif
         <label for="password-input">Password</label>
-        <input type="password" class="form-control" id="password-input" name="password" placeholder="Password" required autofocus>
+        <input type="password" class="form-control" id="password-input" name="password" placeholder="Password" required>
         <label for="repeat-input">Repeat Password</label>
-        <input type="password" class="form-control" id="repeat-input" name="password_confirmation" placeholder="Password" required autofocus>
+        <input type="password" class="form-control" id="repeat-input" name="password_confirmation" placeholder="Password" required>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

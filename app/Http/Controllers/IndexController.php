@@ -4,19 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 class IndexController extends Controller
 {
   //Show main login page.
   //To do: check if user already logged in, redirect appropriately if true
   public function index() {
-    return view('login');
+    if (Auth::guest()) {
+      return view('auth.login');
+    } else {
+      return view('home');
+    }
     //  return view('login')->with(['title'=>'Login']);
   }
 
    //Show the new user creation form
    public function newUser(){
-     return view('newuser')->with(['title'=>'Create User']);
+     return view('auth.register');
    }
 
    //Process submission of new user creation form

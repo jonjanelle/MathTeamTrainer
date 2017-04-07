@@ -23,8 +23,17 @@
             </span>
         @endif
       </div>
+
+      <div class="form-group">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+          </label>
+        </div>
+      </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+
     <p>New user?
       <a href="/newuser"> Create an account</a>
     </p>
