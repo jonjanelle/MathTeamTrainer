@@ -8,7 +8,9 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    Welcome, 
+                    <p>Welcome, {{$user->name}}</p>
+                    <p>You have: {{$user->xp}} points</p>
+
                 </div>
             </div>
         </div>

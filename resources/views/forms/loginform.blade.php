@@ -35,12 +35,10 @@
     </form>
 
     <p>New user?
-      <a href="/newuser"> Create an account</a>
+      <a href="{{route('register')}}">Create an account</a>
     </p>
     <p>Forgot password?
-    <a class="btn btn-link" href="{{ route('password.request') }}">
-      Reset password
-    </a>
+      <a href="{{route('password.request')}}">Reset password</a>
     </p>
   </div>
 </div>

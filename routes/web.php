@@ -11,10 +11,8 @@
 |
 */
 
-//Login and account creation routes
-Route::get('/', 'IndexController@index');
-//Route::post('/login', 'IndexController@validateLogin');
-Route::get('/newuser','IndexController@newUser');
+//root route
+Route::get('/', 'HomeController@index');
 
 //Routes for viewing individual problem
 //These must be positioned before listing route!
@@ -23,9 +21,6 @@ Route::post('/problems/{category}/problem/{pid}/check','ProblemController@checkR
 
 //Routes for viewing problem listing
 Route::get('/problems/{category}/{sortCat?}/{sortOrder?}','ProblemController@index');
-
-
-
 
 
 //Temp route for moving json data to problem database

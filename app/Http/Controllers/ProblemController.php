@@ -32,8 +32,6 @@ class ProblemController extends Controller
   }
 
 
-
-
   /*
    * View a problem from a given $category with
    * id $pid
