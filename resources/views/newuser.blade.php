@@ -1,6 +1,6 @@
 @extends('master.master')
 @section('title')
-  {{$title}} - Math Team Trainer
+  Create User - Math Team Trainer
 @endsection
 @push('head')
   <link rel="stylesheet" href= "css/newuser.css">

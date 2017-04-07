@@ -12,9 +12,9 @@
 */
 
 //Login and account creation routes
-Route::get('/', 'LoginController@index');
-Route::post('/login', 'LoginController@validateLogin');
-Route::get('/newuser','LoginController@newUser');
+Route::get('/', 'IndexController@index');
+//Route::post('/login', 'IndexController@validateLogin');
+Route::get('/newuser','IndexController@newUser');
 
 //Routes for viewing individual problem
 //These must be positioned before listing route!

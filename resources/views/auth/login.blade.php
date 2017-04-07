@@ -64,5 +64,6 @@
             </div>
         </div>
     </div>
+      {{dump(route('login') )}}
 </div>
 @endsection

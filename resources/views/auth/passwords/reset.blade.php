@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('master.master')
+@section('title')
+  Reset Password - Math Team Trainer
+@endsection
 @section('content')
 <div class="container">
     <div class="row">

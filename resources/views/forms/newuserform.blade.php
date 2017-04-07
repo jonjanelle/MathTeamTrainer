@@ -4,17 +4,27 @@
     Create New Account
   </div>
   <div class="form-body">
-    <form method="POST" action="/createuser">
+    <form method="POST" role="form" method="POST" action="{{ route('register') }}">
       {{ csrf_field() }}
       <div class="form-group">
         <label for="user-name">User name</label>
-        <input type="text" class="form-control" id="user-name" name="user-name">
+        <input type="text" class="form-control" id="user-name" name="name" value="{{ old('name') }}" required autofocus>
+        @if ($errors->has('name'))
+            <span class="help-block">
+                <strong>{{ $errors->first('name') }}</strong>
+            </span>
+        @endif
         <label for="email-input">Email address</label>
-        <input type="email" class="form-control" id="email-input" name="email-input" placeholder="Email">
+        <input type="email" class="form-control" id="email-input" name="email" placeholder="Email" required autofocus>
+        @if ($errors->has('email'))
+            <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
         <label for="password-input">Password</label>
-        <input type="password" class="form-control" id="password-input" name="password-input" placeholder="Password">
+        <input type="password" class="form-control" id="password-input" name="password" placeholder="Password" required autofocus>
         <label for="repeat-input">Repeat Password</label>
-        <input type="password" class="form-control" id="repeat-input" name="repeat-input" placeholder="Password">
+        <input type="password" class="form-control" id="repeat-input" name="password_confirmation" placeholder="Password" required autofocus>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>

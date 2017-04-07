@@ -1,6 +1,6 @@
 @extends('master.master')
 @section('title')
-  {{$title}} - Math Team Trainer
+  Math Team Trainer - Login
 @endsection
 @push('head')
   <!--slick carousel css-->

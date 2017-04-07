@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class LoginController extends Controller
+class IndexController extends Controller
 {
   //Show main login page.
   //To do: check if user already logged in, redirect appropriately if true
   public function index() {
-      return view('auth.login');
+    return view('login');
     //  return view('login')->with(['title'=>'Login']);
   }
 
@@ -26,10 +26,10 @@ class LoginController extends Controller
 
    public function validateLogin(Request $request)
    {
-     $email = $request->input('email-input');
-     $password = $request->input('password-input');
+    // $email = $request->input('email-input');
+    // $password = $request->input('password-input');
 
-     return view('problemlist')->with(['email'=>$email,
-                                      'password'=>$password]);
+    // return view('problemlist')->with(['email'=>$email,
+      //                                'password'=>$password]);
     }
 }
