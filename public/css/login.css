@@ -30,12 +30,12 @@ form {
 #login-form {
   margin: 0 auto;
   margin-bottom: 10px;
-  width: 80%;
+  width: 90%;
 }
 
 #site-desc {
   text-align: center;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding: 10px;
   font-size: 1.5em;
@@ -46,9 +46,10 @@ form {
 
 .carousel-div {
   margin: 0 auto;
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #DDD;
+  background-color: rgba(255,255,255,.8);
+  border: 1px solid #CCC;
   text-align: center;
 }

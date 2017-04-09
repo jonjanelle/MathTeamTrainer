@@ -28,7 +28,7 @@
 }
 
 body {
-  background-image: url("/images/triangular.png");
+  background-image: url("/images/bg10.png");
   background-repeat: repeat;
   background-size: auto;
   margin: 0 auto;
@@ -81,14 +81,16 @@ img {
   -moz-box-shadow: 2px 3px 25px -3px rgba(0,0,0,0.65);
   box-shadow: 2px 3px 25px -3px rgba(0,0,0,0.65);
 }
+
 .back-panel {
   margin: 0 auto;
   margin-top: 60px;
   padding: 20px 0 50px 0;
-  background-color: #FCFCFC;
+  background-color: rgba(255,255,255,.90);
   width: 90vw;
   height: 100%;
   overflow: hidden;
   border-radius: 3px;
-  box-shadow: 0 5px 15px 3px rgba(50,50,50,.7);
+  border: 1px solid #bbc;
+  box-shadow: 3px 5px 20px 3px rgba(50,50,50,.7);
 }

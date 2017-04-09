@@ -27,21 +27,25 @@ class HomeController extends Controller
         return view('auth.login');
       }
       $user = Auth::user();
-      $this->getUserData($user->id);
-      return view('home')->with(["user"=>$user]);
+      $solved = $this->getUserSolved($user->id);
+      return view('home')->with(["user"=>$user,
+                                 "solved"=>$solved]);
     }
 
-    public function getUserData($id){
+    /*
+     * List of problems solved is stored in a json file 
+     */
+    public function getUserSolved($id){
       if (file_exists('json/'.$id.'.json')){
         $file = file_get_contents('json/'.$id.'.json');
         $data = json_decode($file, true);
-        Session::put("userData",$data);
+        Session::put("solved",$data);
         return $data;
       }
       else {
-        $newData = json_encode(['solved'=>[]]);
+        $newData = json_encode(array());
         file_put_contents('json/'.$id.'.json', $newData);
-        Session::put("userData",$newData);
+        Session::put("solved",array());
         return array();
       }
     }

@@ -37,6 +37,9 @@
           <div class="problem-box shadow-transition">
             <div class="problem-box-header">
               {{$problem->name}}
+              @if (in_array($problem->id,$solved))
+               <span class="glyphicon glyphicon-ok green-check"></span>
+              @endif
             </div>
             <p>Difficulty: {{$problem->difficulty}}</p>
             <p>XP: {{$problem->xp}}</p>

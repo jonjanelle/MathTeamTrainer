@@ -73,7 +73,11 @@
 
 .feedback-box{
   margin-top: 15px;
-  padding: 5px;
+  padding: 10px;
   text-align: center;
   font-size: 1.5em;
+}
+
+.green-check {
+  color: green;
 }

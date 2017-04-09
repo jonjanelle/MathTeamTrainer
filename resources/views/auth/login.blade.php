@@ -30,9 +30,7 @@
           <div><img src="\images\carousel3.jpg" alt="image 3"></div>
         </div>
       </div>
-
     </div>
-
   </div>
 @endsection
 

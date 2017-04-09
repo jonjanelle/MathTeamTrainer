@@ -5,19 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Session;
 use DB;
+use Auth;
 
 class ProblemController extends Controller
 {
   /*
    * Get problem listing view for selected category
    */
-  public function index($category, $sortCat='xp', $sortOrder="ASC") {
+  public function index($category, $sortCat='id', $sortOrder="ASC") {
     $this->loadProblemData($category,$sortCat,$sortOrder);
     $pData = Session::get($category);
+    $solved = [];
+    if (!Auth::guest()) { $solved = Session::get('solved'); }
     return view('problemlist')->with(['problems'=>$pData,
                                       'category'=>$category,
                                       'sortCat'=>$sortCat,
-                                      'sortOrder'=>$sortOrder]);
+                                      'sortOrder'=>$sortOrder,
+                                      'solved'=>$solved]);
   }
 
   /*
@@ -56,8 +60,8 @@ class ProblemController extends Controller
       //If requested problem not found, then go to listing page
       //for category. To do: send back an error message indicating
       //problem not found.
-      return view('problemlist')->with(['problems'=>$pData,
-                                        'category'=>$category]);
+      //return view('problemlist')->with(['problems'=>$pData,
+        //                                'category'=>$category]);
   }
 
   /*
@@ -78,6 +82,9 @@ class ProblemController extends Controller
       if ($p->id==$pid){
         if ($p->answer==floatval($userResponse)){
           $correct=true;
+          if (!Auth::guest()) {
+            $this->updateUserData($pid);
+          }
         }
         return view('problem')->with(['problem'=> $p,
                                       'feedback'=>true,
@@ -90,4 +97,20 @@ class ProblemController extends Controller
     return view('problemlist')->with(['problems'=>$pData,
                                       'category'=>$category]);
   }
+
+  /*
+   * Add id of new problem solved to user json data
+  */
+  private function updateUserData($pid){
+    $data = Session::get('solved');
+    if (!in_array($pid,$data)){
+      array_push($data,$pid);
+      Session::put('solved',$data);
+      //DB::table('users')->where('id',$Auth::user()->id)->update(['xp' => 1]);
+      //Auth::user()->xp+=100;
+      $data = json_encode($data);
+      file_put_contents('json/'.Auth::user()->id.'.json', $data);
+    }
+  }
+
 }
