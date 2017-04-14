@@ -11,11 +11,18 @@ class ProblemController extends Controller
 {
   /*
    * Get problem listing view for selected category
+   * $category - the all-lowercase category name (algebra, geometry, etc...)
+   * $sortCat - The column by which data should be sorted.
+   * $sortOrder - Order (ASC or DESC) in which results are sorted.
+   *
    */
   public function index($category, $sortCat='id', $sortOrder="ASC") {
-    $this->loadProblemData($category,$sortCat,$sortOrder);
+    if (!Session::has($category)) {
+      $this->loadProblemData($category,$sortCat,$sortOrder);
+    }
     $pData = Session::get($category);
     $solved = [];
+    //Get list of solved problems if user is not a guest
     if (!Auth::guest()) { $solved = Session::get('solved'); }
     return view('problemlist')->with(['problems'=>$pData,
                                       'category'=>$category,
@@ -25,11 +32,21 @@ class ProblemController extends Controller
   }
 
   /*
-   * Store the problem set for a specified category to
-   * the current session
-   * $category - the all-lowercase category name (algebra, geometry, etc...)
+   * Reload the problem data for a specified category
+   * sorted by $sortCat in $sortOrder (ASC or DESC)
    */
-  private static function loadProblemData($category, $sortCat="xp",$order="ASC"){
+  public function sortIndex($category, $sortCat, $sortOrder){
+    $this->loadProblemData($category,$sortCat,$sortOrder);
+    $this->index($category, $sortCat, $sortOrder);
+  }
+
+  /*
+   * Store the problem set for a requested category to the current session
+   * $category - the all-lowercase category name (algebra, geometry, etc...)
+   * $sortCat - The column by which data should be sorted.
+   * $order - Order (ASC or DESC) in which results are sorted.
+   */
+  private static function loadProblemData($category, $sortCat="id",$order="ASC"){
     $data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
     Session::remove($category);
     Session::put($category, $data);
@@ -37,14 +54,14 @@ class ProblemController extends Controller
 
 
   /*
-   * View a problem from a given $category with
-   * id $pid
+   * View a problem from a given $category with id $pid
    */
   public function show($category, $pid){
       if (!Session::has($category)) { //load problem data if needed
         $this->loadProblemData($category);
       }
 
+      //Retrieve data from session (rather than querying db again.)
       $pData = Session::get($category);
 
       foreach ($pData as $p) {
@@ -57,11 +74,10 @@ class ProblemController extends Controller
         }
       }
 
-      //If requested problem not found, then go to listing page
-      //for category. To do: send back an error message indicating
-      //problem not found.
-      //return view('problemlist')->with(['problems'=>$pData,
-        //                                'category'=>$category]);
+      //If requested problem not found, then go to listing page for category.
+      //TO DO: return error message indicating requested problem not found.
+      return view('problemlist')->with(['problems'=>$pData,
+                                        'category'=>$category]);
   }
 
   /*

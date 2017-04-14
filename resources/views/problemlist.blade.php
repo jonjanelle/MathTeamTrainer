@@ -22,11 +22,11 @@
         <span class="caret"></span>
       </button>
         <ul class="dropdown-menu">
-          <li><a href="/problems/{{$category}}/id">ID Number</a></li>
-          <li><a href="/problems/{{$category}}/difficulty/asc">Less Difficult</a></li>
-          <li><a href="/problems/{{$category}}/difficulty/desc">More Difficult</a></li>
-          <li><a href="/problems/{{$category}}/xp/asc">Low XP</a></li>
-          <li><a href="/problems/{{$category}}/xp/desc">High XP</a></li>
+          <li><a href="/problems/sort/{{$category}}/id">ID Number</a></li>
+          <li><a href="/problems/sort/{{$category}}/difficulty/asc">Less Difficult</a></li>
+          <li><a href="/problems/sort/{{$category}}/difficulty/desc">More Difficult</a></li>
+          <li><a href="/problems/sort/{{$category}}/xp/asc">Low XP</a></li>
+          <li><a href="/problems/sort/{{$category}}/xp/desc">High XP</a></li>
         </ul>
       </div>
 

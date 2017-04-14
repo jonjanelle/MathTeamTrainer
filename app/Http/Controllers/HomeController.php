@@ -18,14 +18,14 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
+     * Show the application dashboard for
+     * an authenticated user. Dashboard shows
+     * the username, experience points, and a list
+     * of solved problems
      * @return \Illuminate\Http\Response
      */
     public function index(){
-      if (Auth::guest()) {
-        return view('auth.login');
-      }
+      if (Auth::guest()) { return view('auth.login'); }
       $user = Auth::user();
       $solved = $this->getUserSolved($user->id);
       return view('home')->with(["user"=>$user,
@@ -33,7 +33,10 @@ class HomeController extends Controller
     }
 
     /*
-     * List of problems solved is stored in a json file 
+     * Get an array of all of the problems solved by user.
+     * Solved problems are stored in a json data file.
+     * If no data exists for the user, then a new file is created. 
+     *
      */
     public function getUserSolved($id){
       if (file_exists('json/'.$id.'.json')){
