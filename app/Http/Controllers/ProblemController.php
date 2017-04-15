@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Session;
-use DB;
-use Auth;
-use App\Problem;
-use App\User;
+use Session, Auth;
+use App\Problem, App\User;
 
 
 class ProblemController extends Controller
