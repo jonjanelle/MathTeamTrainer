@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
+
+/*
+* Made this before I knew about seeders to fill db with sample problems.
+*/
 class DataUpdate extends Controller
 {
   public function move() {

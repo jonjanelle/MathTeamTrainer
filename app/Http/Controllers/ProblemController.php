@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Session;
 use DB;
 use Auth;
+use App\Problem;
+use App\User;
+
 
 class ProblemController extends Controller
 {
@@ -37,7 +40,7 @@ class ProblemController extends Controller
    */
   public function sortIndex($category, $sortCat, $sortOrder){
     $this->loadProblemData($category,$sortCat,$sortOrder);
-    $this->index($category, $sortCat, $sortOrder);
+    return $this->index($category, $sortCat, $sortOrder);
   }
 
   /*
@@ -47,7 +50,11 @@ class ProblemController extends Controller
    * $order - Order (ASC or DESC) in which results are sorted.
    */
   private static function loadProblemData($category, $sortCat="id",$order="ASC"){
-    $data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
+    //$data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
+    $data = Problem::where('category','=',$category)
+                  -> orderBy($sortCat, $order)
+                  -> get();
+
     Session::remove($category);
     Session::put($category, $data);
   }
@@ -119,13 +126,16 @@ class ProblemController extends Controller
   */
   private function updateUserData($pid){
     $data = Session::get('solved');
+    //make sure user hasn't already solved problem
     if (!in_array($pid,$data)){
       array_push($data,$pid);
       Session::put('solved',$data);
-      //DB::table('users')->where('id',$Auth::user()->id)->update(['xp' => 1]);
-      //Auth::user()->xp+=100;
+      //Update user experience points
+      $user = Auth::user();
+      $user->xp += 100;
+      $user->save();
       $data = json_encode($data);
-      file_put_contents('json/'.Auth::user()->id.'.json', $data);
+      file_put_contents('json/'.$user->id.'.json', $data);
     }
   }
 
