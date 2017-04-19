@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session, Auth;
-use App\Problem, App\User;
+use App\Problem, App\User, App\Comment;
 
 
 class ProblemController extends Controller
@@ -14,9 +14,8 @@ class ProblemController extends Controller
    * $category - the all-lowercase category name (algebra, geometry, etc...)
    * $sortCat - The column by which data should be sorted.
    * $sortOrder - Order (ASC or DESC) in which results are sorted.
-   *
    */
-  public function index($category, $sortCat='id', $sortOrder="ASC") {
+  public function index($category, $sortCat='id', $sortOrder="asc") {
     if (!Session::has($category)) {
       $this->loadProblemData($category,$sortCat,$sortOrder);
     }
@@ -35,7 +34,8 @@ class ProblemController extends Controller
    * Reload the problem data for a specified category
    * sorted by $sortCat in $sortOrder (ASC or DESC)
    */
-  public function sortIndex($category, $sortCat, $sortOrder){
+  public function sortIndex($category, $sortCat, $sortOrder)
+  {
     $this->loadProblemData($category,$sortCat,$sortOrder);
     return $this->index($category, $sortCat, $sortOrder);
   }
@@ -46,7 +46,7 @@ class ProblemController extends Controller
    * $sortCat - The column by which data should be sorted.
    * $order - Order (ASC or DESC) in which results are sorted.
    */
-  private static function loadProblemData($category, $sortCat="id",$order="ASC"){
+  private static function loadProblemData($category, $sortCat="id",$order="asc"){
     //$data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
     $data = Problem::where('category','=',$category)
                   -> orderBy($sortCat, $order)
@@ -56,6 +56,10 @@ class ProblemController extends Controller
     Session::put($category, $data);
   }
 
+  //Get list of Comment objects for the given problem id number.
+  private function getCommentsByProblem($pid) {
+      return Problem::find($pid)->comments;
+  }
 
   /*
    * View a problem from a given $category with id $pid
@@ -65,16 +69,19 @@ class ProblemController extends Controller
         $this->loadProblemData($category);
       }
 
+      //Get the comment board for this problem if user is logged in
+      $comments = Auth::guest()?null:$this->getCommentsByProblem($pid);
+
       //Retrieve data from session (rather than querying db again.)
       $pData = Session::get($category);
-
-      foreach ($pData as $p) {
+      foreach ($pData as $p) { //linear search for id (ids not necessarily ordered)
         if ($p->id==$pid){
           return view('problem')->with(['problem'=>$p,
                                         'category'=>$category,
                                         'feedback'=>false,
                                         'next'=>'None',
-                                        'prev'=>'None']);
+                                        'prev'=>'None',
+                                        'comments'=>$comments]);
         }
       }
 
@@ -97,7 +104,7 @@ class ProblemController extends Controller
     $pData = Session::get($category);
     $correct = false;
     $userResponse = $request->input("answer-input");
-
+    $comments = Auth::guest()?null:$this->getCommentsByProblem($pid);
     foreach ($pData as $p) {
       if ($p->id==$pid){
         if ($p->answer==floatval($userResponse)){
@@ -111,15 +118,32 @@ class ProblemController extends Controller
                                       'correct'=>$correct,
                                       'userAns'=>$userResponse,
                                       'next'=>'None',
-                                      'prev'=>'None']);
+                                      'prev'=>'None',
+                                      'comments'=>$comments]);
       }
     }
     return view('problemlist')->with(['problems'=>$pData,
                                       'category'=>$category]);
   }
 
+
+  /*
+   * Post a new comment to a problem's discussion board
+   *
+  */
+  public function postNewComment(Request $request, $category,$pid)
+  {
+    $newComment = new Comment();
+    $newComment->message = $request->input("comment-input");
+    $newComment->problem_id = $pid;
+    $newComment->user_id = Auth::user()->id;
+    $newComment->save();
+    return $this->show($category, $pid);
+  }
+
   /*
    * Add id of new problem solved to user json data
+   * Should be using a pivot table here.
   */
   private function updateUserData($pid){
     $data = Session::get('solved');
@@ -135,5 +159,6 @@ class ProblemController extends Controller
       file_put_contents('json/'.$user->id.'.json', $data);
     }
   }
+
 
 }

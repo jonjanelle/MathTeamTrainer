@@ -14,5 +14,5 @@
 @endsection
 
 @push('body')
-  <script type="text/javascript" src="/js/newuser.js"></script>
+
 @endpush

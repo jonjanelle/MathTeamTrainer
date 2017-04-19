@@ -33,22 +33,3 @@
     </div>
   </div>
 @endsection
-
-@push('body')
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('.carousel').slick({
-        dots: true,
-        arrows: true,
-        speed: 300,
-        slidesToShow: 1,
-        autoplay: true,
-        autoplayspeed: 3000,
-        centerMode: true,
-      });
-    });
-  </script>
-@endpush

@@ -10,10 +10,12 @@
   <div class="header">
     {{$category}}
     <div class="sub-header">
-      <div class="alert alert-success">
-        Sorted by: {{$sortCat}}
+      <div class="alert alert-success" id='sub-head-alert'>
+        Sorted by: {{isset($sortCat)?$sortCat:''}}
       </div>
-
+      @if (isset($sortOrder))
+        {{$sortOrder=='asc'?'increasing':'decreasing'}}
+      @endif
     </div>
   </div>
   <div class="pad-20">
@@ -22,7 +24,7 @@
         <span class="caret"></span>
       </button>
         <ul class="dropdown-menu">
-          <li><a href="/problems/sort/{{$category}}/id">ID Number</a></li>
+          <li><a href="/problems/sort/{{$category}}/id/asc">ID Number</a></li>
           <li><a href="/problems/sort/{{$category}}/difficulty/asc">Less Difficult</a></li>
           <li><a href="/problems/sort/{{$category}}/difficulty/desc">More Difficult</a></li>
           <li><a href="/problems/sort/{{$category}}/xp/asc">Low XP</a></li>
@@ -33,7 +35,7 @@
     <div class="row">
     @foreach ($problems as $problem)
       <a href="/problems/{{$category}}/problem/{{$problem->id}}">
-        <div class="col col-md-4 col-sm-6 col-xs-12">
+        <div class="col col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
           <div class="problem-box shadow-transition">
             <div class="problem-box-header">
               {{$problem->name}}

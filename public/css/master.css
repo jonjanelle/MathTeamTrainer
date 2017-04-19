@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
 /* fonts downloaded from dafont.com */
 @font-face {
     font-family: 'Makisupa';
@@ -41,6 +42,10 @@ img {
   object-fit: contain;
 }
 
+th, tr, td{
+  text-align: center;
+}
+
 .alert {
   margin: 0 auto;
   padding:0;
@@ -52,15 +57,21 @@ img {
 }
 
 .header {
-  font-family: 'CalculusSans';
+  font-family: Raleway, 'Open Sans';
   margin-bottom: 20px;
-  font-size: 3.5em;
+  font-size: 2.5em;
   text-align: center;
   letter-spacing: 5px;
   background-color: #558;
   color: #f7f7f7;
 }
-
+.sub-header {
+  text-align: center;
+  font-size:18px;
+}
+#sub-head-alert{
+  border-radius: 0;
+}
 /*Hover/mouse leave box shadow changes*/
 .shadow-transition {
   transition: box-shadow 1s ease;
@@ -86,7 +97,7 @@ img {
   margin: 0 auto;
   margin-top: 60px;
   padding: 20px 0 50px 0;
-  background-color: rgba(255,255,255,.90);
+  background-color: rgb(252,253,253);
   width: 90vw;
   height: 100%;
   overflow: hidden;

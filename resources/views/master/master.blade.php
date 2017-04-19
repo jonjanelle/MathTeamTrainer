@@ -7,16 +7,17 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!--jQuery-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!--jQuery and slick carousels-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
     <!-- Latest compiled and minified bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href= "/css/master.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans"/>
     <title>@yield('title','Math Team Trainer')</title>
-
     @stack('head')
   </head>
 
@@ -46,7 +47,7 @@
                 <li><a href="/problems/Trig">Trigonometry</a></li>
               </ul>
             </li><!--end dropdown-->
-            <li><a href="#">Leaderboard</a></li>
+            <li><a href="/leaderboard">Leaderboard</a></li>
             <li><a href="#">Links</a></li>
             @if (!Auth::guest())
               <li class="dropdown">
@@ -74,11 +75,11 @@
 
     @if (count($errors) > 0)
       <div class="alert alert-danger">
-          <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-          </ul>
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
       </div>
     @endif
 
@@ -86,7 +87,8 @@
       @yield('content')
     </div>
 
-    @stack('body')
 
+    <script type="text/javascript" src="/js/login_effects.js"></script>
+    @stack('body')
   </body>
 </html>

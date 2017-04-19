@@ -14,11 +14,12 @@
 //root route
 Route::get('/', 'HomeController@index');
 //Route::get('/', 'DataUpdate@move');
-
+Route::get('/leaderboard','LeaderBoardController@index');
 //Routes for viewing individual problem
 //These must be positioned before listing route!
 Route::get('/problems/{category}/problem/{pid}','ProblemController@show'); //pid = problem id
 Route::post('/problems/{category}/problem/{pid}/check','ProblemController@checkResponse');
+Route::post('/problems/{category}/problem/{pid}/comment','ProblemController@postNewComment');
 
 //Route for viewing problem listing
 Route::get('/problems/{category}','ProblemController@index');

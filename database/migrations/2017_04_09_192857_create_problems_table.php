@@ -18,11 +18,13 @@ class CreateProblemsTable extends Migration
         $table->increments('id');
         $table->string('name');
         $table->string('category');
-        $table->string('subcategory');
+        $table->string('subcategory')->nullable();
         $table->string('difficulty');
         $table->string('image');
         $table->double('answer', 15, 8);
         $table->integer('xp');
+        $table->integer('likes')->default(0);
+        $table->integer('dislikes')->default(0);
         $table->timestamps();
       });
 

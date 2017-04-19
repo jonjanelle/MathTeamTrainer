@@ -1,0 +1,14 @@
+#leaderboard {
+  width: 90%;
+  height: 80vh;
+  margin: 0 auto;
+  border-radius: 5px;
+  text-align: center;
+  background-color: white;
+}
+
+
+#leaderboard .panel-heading {
+  font-style: italic;
+  background-color: #f5f5f5;
+}

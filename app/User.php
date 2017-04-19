@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /*
+     * Define one-to-many between user and comments
+     */
+    public function comments() {
+      return $this->hasMany('App\Comment')->orderBy('created_at', 'DESC');
+    }
 }

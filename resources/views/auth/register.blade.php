@@ -3,7 +3,7 @@
   Create User - Math Team Trainer
 @endsection
 @push('head')
-  <link rel="stylesheet" href= "css/newuser.css">
+  <link rel="stylesheet" href= "css/login.css">
 @endpush
 
 @section('content')
@@ -14,5 +14,5 @@
 @endsection
 
 @push('body')
-  <script type="text/javascript" src="/js/newuser.js"></script>
+  <script type="text/javascript" src="/js/login.js"></script>
 @endpush

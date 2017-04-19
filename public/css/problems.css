@@ -11,19 +11,21 @@
 
 .problem-box:hover {
   transition: border-radius .5s, border 1s;
-  border: 2px solid #7c8;
+  border: 2px solid rgba(115, 195, 130, .8);
   color: #114;
   border-radius: 0;
+  background-color: #ffffff;
 }
 
 .problem-box-header {
-  background-color: #dff0f0;
-  border-bottom: 2px solid #b5d0d0;
+  background-color: rgb(120, 120, 120);
+  color: white;
   margin: 8px;
   padding: 5px;
   font-size: 1.5em;
-  border-radius: 15px;
+  border-radius: 5px;
 }
+
 /* end listing page problem box styles */
 .pad-20{
   padding: 0 20px 20px 20px;
@@ -40,9 +42,7 @@
   padding: 5px;
 }
 
-.sub-header {
-  font-size: 24px;
-}
+
 
 .answer-form-div {
   margin: 0 auto;
@@ -71,13 +71,82 @@
   color: #fff;
 }
 
+
 .feedback-box{
   margin-top: 15px;
   padding: 10px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .green-check {
-  color: green;
+  color: #00BB00;
+}
+
+.comment-container {
+  margin: 0 auto;
+  max-width: 90%;
+  padding: 10px;
+  border-radius: 10px;
+
+}
+.comment-header {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 20px 5px 5px 10px;
+}
+.comment-author {
+  float: left;
+  padding-right: 10px;
+}
+
+.comment-date {
+  float: right;
+}
+.comment-box {
+  max-width: 95%;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  padding: 3px 5px 3px 5px;
+  background-color: #FAFAFA;
+  border-radius: 5px;
+  border: 1px solid #AAA;
+}
+
+.comment-message {
+  display: block;
+  clear: both;
+  min-height: 30px;
+  border-radius: 3px;
+  font-family: Raleway,sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #797979;
+}
+
+#new-comment-toggle {
+  text-align: center;
+  font-style: italic;
+  color: #4545A5;
+}
+#new-comment-toggle:hover{
+  font-weight: bold;
+}
+#new-comment-div {
+  display: none;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#comment-form {
+  margin: 0 auto;
+  text-align: center;
+  width: 85%;
+}
+
+.spacer-lg-top {
+  margin-top:30px;
 }

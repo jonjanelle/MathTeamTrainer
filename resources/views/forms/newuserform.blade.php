@@ -1,4 +1,4 @@
-<div class="form-box shadow-transition">
+<div class="form-box shadow-transition" id="new-user-form">
   <div class="form-head">
     <span class="glyphicon glyphicon-list-alt"></span>
     Create New Account

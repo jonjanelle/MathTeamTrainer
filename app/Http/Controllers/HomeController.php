@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
-use Session;
+use Auth, Session, App\User;
 
 class HomeController extends Controller
 {
@@ -27,15 +26,17 @@ class HomeController extends Controller
     public function index(){
       if (Auth::guest()) { return view('auth.login'); }
       $user = Auth::user();
+      $comments = User::find($user->id)->comments;
       $solved = $this->getUserSolved($user->id);
       return view('home')->with(["user"=>$user,
-                                 "solved"=>$solved]);
+                                 "solved"=>$solved,
+                                 "comments"=>$comments]);
     }
 
     /*
      * Get an array of all of the problems solved by user.
      * Solved problems are stored in a json data file.
-     * If no data exists for the user, then a new file is created. 
+     * If no data exists for the user, then a new file is created.
      *
      */
     public function getUserSolved($id){
