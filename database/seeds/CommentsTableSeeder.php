@@ -36,5 +36,13 @@ class CommentsTableSeeder extends Seeder
         'user_id'=>1
       ]);
 
+      Comment::insert([
+        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+        'message'=> 'I am the BEST message!',
+        'problem_id'=>2,
+        'user_id'=>2
+      ]);
+
     }
 }

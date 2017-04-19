@@ -13,7 +13,7 @@
     <br />
   </div>
 </div>
-<div class="panel panel-default" id="leaderboard">
+<div class="panel panel-info" id="leaderboard">
   <!-- Default panel contents -->
   <div class="panel-heading">
     Top Scorers
@@ -34,7 +34,7 @@
           <td>{{$index+1}}</td>
           <td>{{$user->name}}</td>
           <td>{{$user->xp}}</td>
-          <td>0</td>
+          <td>{{$user->solved}}</td>
           <td>{{$user->created_at}}</td>
         </tr>
       @endforeach

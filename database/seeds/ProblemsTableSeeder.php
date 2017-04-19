@@ -136,7 +136,7 @@ class ProblemsTableSeeder extends Seeder
       'name'=> 'Problem 13',
       'difficulty'=>'easy',
       'image'=>'/images/algebra/algebraP13.PNG',
-      'answer'=> -137,
+      'answer'=> 87,
       'xp'=>150
     ]);
     Problem::insert([

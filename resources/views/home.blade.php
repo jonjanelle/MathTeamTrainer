@@ -34,7 +34,7 @@
             <tr>
               <td>{{$user->name}}</td>
               <td>{{$user->xp}}</td>
-              <td>3</td>
+              <td>{{$user->solved}}</td>
               <td>Algebra</td>
             </tr>
           </tbody>
@@ -56,10 +56,20 @@
               <th>#</th>
               <th>Category</th>
               <th>Name</th>
+              <th>Difficulty</th>
               <th>XP</th>
             </tr>
           </thead>
           <tbody>
+            @foreach ($user->problems as $index=>$problem)
+              <tr>
+                <td>{{$index+1}}</td>
+                <td>{{$problem->category}}</td>
+                <td>{{$problem->name}}</td>
+                <td>{{$problem->difficulty}}</td>
+                <td>{{$problem->xp}}</td>
+              </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -88,8 +98,8 @@
               <tr>
                 <td>{{$index+1}}</td>
                 <td>{{$comment->message}}</td>
-                <td>0</td>
-                <td>0</td>
+                <td>{{$comment->problem->category}}</td>
+                <td>{{$comment->problem->name}}</td>
                 <td>{{$comment->created_at}}</td>
               </tr>
             @endforeach

@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index(){
       if (Auth::guest()) { return view('auth.login'); }
-      $user = Auth::user();
+      $user = Auth::user()->with('problems')->first();
       $comments = User::find($user->id)->comments;
       $solved = $this->getUserSolved($user->id);
       return view('home')->with(["user"=>$user,

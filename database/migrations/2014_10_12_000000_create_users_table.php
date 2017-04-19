@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('xp')->default(0); //experience points
+            $table->integer('solved')->default(0); //# of problems solved
             $table->rememberToken();
             $table->timestamps();
         });

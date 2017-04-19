@@ -19,7 +19,6 @@ class CreateCommentsTable extends Migration
         $table->string('message');
         $table->integer('likes')->default(0);
         $table->integer('dislikes')->default(0);
-    
         $table->timestamps();
       });
     }

@@ -100,7 +100,7 @@
         </div>
         @foreach($comments as $comment)
           <div class="comment-box shadow-transition">
-            <div class="comment-author">{{App\User::find($comment->user_id)->name}}</div>
+            <div class="comment-author">{{$comment->user->name}}</div>
             <div class="comment-date">{{$comment->created_at}}</div>
             <div class="comment-message">{{$comment->message}}</div>
           </div>

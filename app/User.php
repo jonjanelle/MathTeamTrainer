@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Problem;
 
 class User extends Authenticatable
 {
@@ -33,4 +34,10 @@ class User extends Authenticatable
     public function comments() {
       return $this->hasMany('App\Comment')->orderBy('created_at', 'DESC');
     }
+
+    public function problems() {
+        return $this->belongsToMany('App\Problem')->withTimestamps();
+    }
+
+
 }
