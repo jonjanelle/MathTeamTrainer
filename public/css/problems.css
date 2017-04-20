@@ -146,6 +146,9 @@
   text-align: center;
   width: 85%;
 }
+#comment-submit {
+  margin-top: 5px;
+}
 
 .spacer-lg-top {
   margin-top:30px;

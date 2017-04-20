@@ -93,9 +93,9 @@
             {{ csrf_field() }}
             <div class="form-group">
               <textarea rows="3" class="form-control" id="comment-input" name="comment-input" placeholder="posts containing profanity, insults, or answers may be removed at the discretion of the moderator"></textarea>
+              <input class="btn btn-primary" id="comment-submit" type="submit" value="Post">
             </div>
-            <input class="btn btn-primary" type="submit" value="Post">
-            <div class="spacer-sm"></div>
+      
           </form>
         </div>
         @foreach($comments as $comment)
