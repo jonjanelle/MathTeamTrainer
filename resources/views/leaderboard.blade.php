@@ -21,10 +21,10 @@
     <thead class="thead-default">
       <tr>
         <th>#</th>
-        <th>name</th>
-        <th>xp</th>
-        <th># solved</th>
-        <th>member since</th>
+        <th>Name</th>
+        <th>XP</th>
+        <th># Solved</th>
+        <th>Member Since</th>
       </tr>
     </thead>
     <tbody>
