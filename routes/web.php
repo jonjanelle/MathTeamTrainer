@@ -26,7 +26,7 @@ Route::get('/leaderboard','LeaderboardController@index');
 Route::get('/problems/{category}/problem/{pid}','ProblemController@show'); //pid = problem id
 Route::post('/problems/{category}/problem/{pid}/check','ProblemController@checkResponse');
 Route::post('/problems/{category}/problem/{pid}/comment','ProblemController@postNewComment');
-
+Route::get('/problems/{category}/problem/{pid}/check','ProblemController@checkResponse');
 //Route for viewing problem listing
 Route::get('/problems/{category}','ProblemController@index');
 //Route for viewing sorted listing

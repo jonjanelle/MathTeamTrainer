@@ -61,6 +61,18 @@
         </div>
       @endif
     @endif
+    @if (count($errors) > 0)
+      <div class="alert alert-danger feedback-box" id="incorrectAns">
+        <button type="button" class="close" data-target="#incorrectAns" data-dismiss="alert">
+          <span aria-hidden="true">X</span>
+        </button>
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     <!-- begin problem answer input form -->
     <div class="answer-form-div">
       <form id="answer-form" method="POST" action="/problems/{{$problem->category}}/problem/{{$problem->id}}/check">

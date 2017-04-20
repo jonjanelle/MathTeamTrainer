@@ -105,6 +105,8 @@ class ProblemController extends Controller
    * $pid : Problem id code
    */
   public function checkResponse(Request $request, $category, $pid) {
+    $this -> validate($request, ['answer-input'=>'required|alphanum|min:1',]);
+
     if (!Session::has($category)) { //load problem data if needed
       $this->loadProblemData($category);
     }

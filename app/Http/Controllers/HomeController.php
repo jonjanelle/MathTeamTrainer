@@ -82,9 +82,11 @@ class HomeController extends Controller
     */
     public function deleteComment($cid)
     {
-      //TODO Make sure that ownly comment owner can delete it!
-      
-      Comment::destroy($cid);
+      //Make sure that only owner can delete
+      $c = Comment::find($cid);
+      if ($c!=null && $c->user->id==Auth::user()->id) {
+        Comment::destroy($cid);
+      }
       return $this->index();
     }
 
