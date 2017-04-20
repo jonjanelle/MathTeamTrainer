@@ -49,8 +49,8 @@ class ProblemController extends Controller
   private static function loadProblemData($category, $sortCat="id",$order="asc"){
     //$data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
     $data = Problem::where('category','=',$category)
-                  -> orderBy($sortCat, $order)
-                  -> get();
+                     ->orderBy($sortCat, $order)
+                     ->get();
 
     Session::remove($category);
     Session::put($category, $data);

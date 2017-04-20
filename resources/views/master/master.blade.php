@@ -48,14 +48,12 @@
               </ul>
             </li><!--end dropdown-->
             <li><a href="/leaderboard">Leaderboard</a></li>
-            <li><a href="#">Links</a></li>
             @if (!Auth::guest())
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                   {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Account Settings</a></li>
                   <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       Logout
