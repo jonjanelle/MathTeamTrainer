@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth, Session, App\User;
+use Auth, Session, App\User, App\Comment;
 
 class HomeController extends Controller
 {
@@ -77,6 +77,13 @@ class HomeController extends Controller
     }
 
 
-
+    /*
+    * Delete a comment
+    */
+    public function deleteComment($cid)
+    {
+      Comment::destroy($cid);
+      return $this->index();
+    }
 
 }

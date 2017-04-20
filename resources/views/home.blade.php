@@ -94,7 +94,7 @@
   <!--begin comment history section-->
   <div class="row">
     <div class="col col-md-12">
-      <div class="panel panel-info shadow-transition home-panel">
+      <div class="panel panel-info shadow-transition home-panel table-responsive">
         <!-- Default panel contents -->
         <div class="panel-heading">Comment History</div>
         <table class="table table-hover table-striped">
@@ -104,6 +104,7 @@
               <th>Message</th>
               <th>Category</th>
               <th>Name</th>
+              <th>Action</th>
               <th>Date</th>
             </tr>
           </thead>
@@ -120,6 +121,11 @@
                 <td>
                   <a href="/problems/{{$comment->problem->category}}/problem/{{$comment->problem->id}}">
                     {{$comment->problem->name}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/home/deletecomment/{{$comment->id}}">
+                    <span class="glyphicon glyphicon-trash"></span>
                   </a>
                 </td>
                 <td>{{$comment->created_at}}</td>

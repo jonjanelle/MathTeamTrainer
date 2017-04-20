@@ -5,6 +5,7 @@
 
 .home-panel .panel-heading{
   font-weight: bold;
+  width: auto;
 }
 
 #leaderboard {
