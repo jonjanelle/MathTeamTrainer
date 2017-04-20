@@ -95,8 +95,10 @@
   <div class="spacer-lg-top"></div>
   @if (Auth::guest())
     <div class="comment-header">
-      <span class="glyphicon glyphicon-lock"></span>
-      Login to view the discussion board for this problem.
+      <a href="/login">
+        <span class="glyphicon glyphicon-lock"></span>
+        Login to view the discussion board for this problem.
+      </a>
     </div>
     @else
       <div class="comment-container">
