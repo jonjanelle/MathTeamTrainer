@@ -16,3 +16,8 @@ $(document).ready(function(){
     centerMode: true,
   });
 });
+
+//Enable glyphicon tooltips
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});

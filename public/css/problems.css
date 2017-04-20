@@ -153,3 +153,8 @@
 .spacer-lg-top {
   margin-top:30px;
 }
+
+#input-tooltip {
+  font-size: 1.2em;
+  color: #444444;
+}

@@ -77,7 +77,13 @@
           <label for="answer-input">Answer</label>
         </h3>
         <div class="input-group">
-          <span class="input-group-addon" id="submit-addon1"><span class="glyphicon glyphicon-pencil"></span></span>
+
+
+          <span class="input-group-addon" id="submit-addon1">
+            <a href="#" data-toggle="tooltip" title="Required. Enter exact answer. Numeric answers will not exceed four decimal places.">
+              <span class="glyphicon glyphicon-info-sign" id="input-tooltip"></span>
+            </a>
+          </span>
           <input type="text" class="form-control" id="answer-input" name="answer-input" aria-describedby="submit-addon1" required="true">
         </div>
         <div class="spacer-sm">
