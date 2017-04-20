@@ -46,9 +46,13 @@ th, tr, td{
   text-align: center;
 }
 
-.alert {
-  margin: 0 auto;
-  padding:0;
+
+
+.feedback-box{
+  margin-top: 15px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.2em;
 }
 
 .navbar-brand {

@@ -9,11 +9,7 @@
 @section('content')
 
   <div class="header" id="problem-title">
-
-
     {{$problem->category}} - {{$problem->name}}
-
-
     <div class="sub-header">
       <div class="alert alert-info" id='sub-head-alert'>
         @if ($prev !='None')

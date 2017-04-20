@@ -1,4 +1,9 @@
-/*listing page problem box styles */
+
+.alert {
+  margin: 0 auto;
+  padding:0;
+}
+
 .problem-box {
   font-family: 'Makisupa';
   margin: 2% 5% 2% 5%;
@@ -78,12 +83,6 @@
   font-size: 2em;
 }
 
-.feedback-box{
-  margin-top: 15px;
-  padding: 10px;
-  text-align: center;
-  font-size: 1.2em;
-}
 
 .green-check {
   color: #00BB00;

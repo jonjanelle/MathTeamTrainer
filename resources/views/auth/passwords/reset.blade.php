@@ -11,9 +11,12 @@
 
                 <div class="panel-body">
                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                      <div class="alert alert-success feedback-box" id="correctAns">
+                        <button type="button" class="close" data-target="#correctAns" data-dismiss="alert">
+                          <span aria-hidden="true">X</span>
+                        </button>
+                        {{ session('status') }}
+                      </div>
                     @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('password.request') }}">
