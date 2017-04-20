@@ -14,7 +14,7 @@
 //root route
 Route::get('/', 'HomeController@index');
 //Route::get('/', 'DataUpdate@move');
-Route::get('/leaderboard','LeaderBoardController@index');
+Route::get('/leaderboard','LeaderboardController@index');
 //Routes for viewing individual problem
 //These must be positioned before listing route!
 Route::get('/problems/{category}/problem/{pid}','ProblemController@show'); //pid = problem id
