@@ -18,7 +18,7 @@
   <!--begin account summary section-->
   <div class="row">
     <div class="col col-md-12">
-      <div class="panel panel-info shadow-transition" id="leaderboard">
+      <div class="panel panel-info shadow-transition home-panel">
         <!-- Default panel contents -->
         <div class="panel-heading">Account Overview</div>
         <table class="table table-hover table-striped">
@@ -47,7 +47,7 @@
   <!--begin problem history section-->
   <div class="row">
     <div class="col col-md-12">
-      <div class="panel panel-info shadow-transition" id="leaderboard">
+      <div class="panel panel-info shadow-transition home-panel">
         <!-- Default panel contents -->
         <div class="panel-heading">Problem History</div>
         <table class="table table-hover table-striped">
@@ -80,7 +80,7 @@
   <!--begin comment history section-->
   <div class="row">
     <div class="col col-md-12">
-      <div class="panel panel-info shadow-transition" id="leaderboard">
+      <div class="panel panel-info shadow-transition home-panel">
         <!-- Default panel contents -->
         <div class="panel-heading">Comment History</div>
         <table class="table table-hover table-striped">

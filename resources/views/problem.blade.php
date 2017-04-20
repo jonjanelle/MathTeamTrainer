@@ -9,33 +9,38 @@
 @section('content')
 
   <div class="header" id="problem-title">
-    @if ($prev !='None')
-      <div id="left-link">
-        <a href="/problems/{{$problem->category}}/{{$prev}}">
-          <span class="glyphicon glyphicon-circle-arrow-left arrow-link"></span>
-        </a>
-      </div>
-    @endif
+
 
     {{$problem->category}} - {{$problem->name}}
-    @if ($next!='None')
-      <div id="right-link">
-        <a href="/problems/{{$problem->category}}/{{$next}}">
-          <span class="glyphicon glyphicon-circle-arrow-right arrow-link"></span>
-        </a>
-      </div>
-    @endif
+
 
     <div class="sub-header">
       <div class="alert alert-info" id='sub-head-alert'>
+        @if ($prev !='None')
+          <div id="left-link">
+            <a href="/problems/{{$problem->category}}/problem/{{$prev}}">
+              <span class="glyphicon glyphicon-circle-arrow-left arrow-link"></span>
+            </a>
+          </div>
+        @endif
         Difficulty: {{$problem->difficulty}}
+        @if ($next!='None')
+          <div id="right-link">
+            <a href="/problems/{{$problem->category}}/problem/{{$next}}">
+              <span class="glyphicon glyphicon-circle-arrow-right arrow-link"></span>
+            </a>
+          </div>
+        @endif
       </div>
       XP: {{$problem->xp}}
+      @if (in_array($problem->id,$solved))
+       <span class="glyphicon glyphicon-ok green-check"></span>
+      @endif
     </div>
   </div> <!-- end header -->
   <div class="pad-20"><!-- begin problem display -->
     <div class="img-box light-shadowbox">
-      <img src={{$problem->image}} alt="problem image">
+      <img src="{{$problem->image}}" alt="problem image">
     </div>
 
     @if ($feedback)
@@ -65,7 +70,7 @@
         </h3>
         <div class="input-group">
           <span class="input-group-addon" id="submit-addon1"><span class="glyphicon glyphicon-pencil"></span></span>
-          <input type="text" class="form-control" id="answer-input" name="answer-input" aria-describedby="submit-addon1">
+          <input type="text" class="form-control" id="answer-input" name="answer-input" aria-describedby="submit-addon1" required="true">
         </div>
         <div class="spacer-sm">
           <input class="btn btn-primary" type="submit" value="Submit">
@@ -92,7 +97,7 @@
           <form method="POST" id="comment-form" action="/problems/{{$problem->category}}/problem/{{$problem->id}}/comment">
             {{ csrf_field() }}
             <div class="form-group">
-              <textarea rows="3" class="form-control" id="comment-input" name="comment-input" placeholder="posts containing profanity, insults, or answers may be removed at the discretion of the moderator"></textarea>
+              <textarea rows="3" class="form-control" id="comment-input" name="comment-input" placeholder="Posts containing profanity, insults, or answers may be removed at the discretion of the moderator." required></textarea>
               <input class="btn btn-primary" id="comment-submit" type="submit" value="Post">
             </div>
 

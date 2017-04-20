@@ -56,12 +56,11 @@ class ProblemController extends Controller
     Session::put($category, $data);
   }
 
-
-
   /*
    * View a problem from a given $category with id $pid
+   * if $feedback is true, then showing problem after an answer submit.
    */
-  public function show($category, $pid){
+  public function show($category, $pid, $feedback=false, $correct=false, $userResponse=null){
       if (!Session::has($category)) { //load problem data if needed
         $this->loadProblemData($category);
       }
@@ -71,19 +70,31 @@ class ProblemController extends Controller
 
       //Retrieve data from session (rather than querying db again.)
       $pData = Session::get($category);
-      foreach ($pData as $p) { //linear search for id (ids not necessarily ordered)
+      for ($i=0; $i<$pData->count(); $i++) {
+        $p=$pData[$i];
+        //linear search for id (ids not necessarily ordered)
         if ($p->id==$pid){
+          $prev = 'None';
+          $next = 'None';
+          if ($i>0) { $prev=$pData[$i-1]->id; }
+          if ($i<$pData->count()-1) { $next=$pData[$i+1]->id; }
+          $solved = [];
+          if (!Auth::guest()) { $solved = Session::get('solved');}
+
           return view('problem')->with(['problem'=>$p,
                                         'category'=>$category,
                                         'feedback'=>false,
-                                        'next'=>'None',
-                                        'prev'=>'None',
-                                        'comments'=>$comments]);
+                                        'next'=>$next,
+                                        'prev'=>$prev,
+                                        'comments'=>$comments,
+                                        'feedback'=>$feedback,
+                                        'correct'=>$correct,
+                                        'userAns'=>$userResponse,
+                                        'solved'=>$solved]);
         }
       }
 
       //If requested problem not found, then go to listing page for category.
-      //TO DO: return error message indicating requested problem not found.
       return view('problemlist')->with(['problems'=>$pData,
                                         'category'=>$category]);
   }
@@ -101,7 +112,7 @@ class ProblemController extends Controller
     $pData = Session::get($category);
     $correct = false;
     $userResponse = $request->input("answer-input");
-    $comments = Auth::guest()?null:$this->getCommentsByProblem($pid);
+
     foreach ($pData as $p) {
       if ($p->id==$pid){
         if ($p->answer==floatval($userResponse)){
@@ -110,13 +121,8 @@ class ProblemController extends Controller
             $this->updateUserData($p);
           }
         }
-        return view('problem')->with(['problem'=> $p,
-                                      'feedback'=>true,
-                                      'correct'=>$correct,
-                                      'userAns'=>$userResponse,
-                                      'next'=>'None',
-                                      'prev'=>'None',
-                                      'comments'=>$comments]);
+        return $this->show($category, $pid, true, $correct, $userResponse);
+
       }
     }
     return view('problemlist')->with(['problems'=>$pData,

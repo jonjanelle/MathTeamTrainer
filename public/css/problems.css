@@ -54,6 +54,8 @@
 .spacer-sm {
   margin: 5px;
 }
+
+
 #left-link{
   float: left;
 }
@@ -63,12 +65,13 @@
 }
 
 .arrow-link {
+  font-size: 1.4em;
   transition: color .5s ease;
-  color: #aac;
+  color: #777;
 }
 .arrow-link:hover {
   transition: color .5s ease;
-  color: #fff;
+  color: #333;
 }
 
 #problem-title {

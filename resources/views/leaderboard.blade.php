@@ -1,6 +1,6 @@
 @extends('master.master')
 @push('head')
-  <link rel="stylesheet" href= "/css/leaderboard.css">
+  <link rel="stylesheet" href= "/css/home.css">
 @endpush
 
 @section('content')
