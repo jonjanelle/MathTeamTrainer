@@ -14,8 +14,8 @@ class ProblemUserTableSeeder extends Seeder
      {
        # Key is a user id, value is an array of problem ids
        $users =[
-           1 => [1,2,3],
-           2 => [5,6,7]
+           1 => [1,2,3,7,8],
+           4 => [1]
        ];
 
        # Now loop through the above array, creating a new pivot for each book to tag

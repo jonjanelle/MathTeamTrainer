@@ -22,7 +22,7 @@ class ProblemController extends Controller
     $pData = Session::get($category);
     $solved = [];
     //Get list of solved problems if user is not a guest
-    if (!Auth::guest()) { $solved = Session::get('solved'); }
+    if (!Auth::guest()) { $solved = Session::get('solved');}
     return view('problemlist')->with(['problems'=>$pData,
                                       'category'=>$category,
                                       'sortCat'=>$sortCat,
@@ -56,10 +56,7 @@ class ProblemController extends Controller
     Session::put($category, $data);
   }
 
-  //Get list of Comment objects for the given problem id number.
-  private function getCommentsByProblem($pid) {
-      return Problem::find($pid)->comments;
-  }
+
 
   /*
    * View a problem from a given $category with id $pid
@@ -109,8 +106,8 @@ class ProblemController extends Controller
       if ($p->id==$pid){
         if ($p->answer==floatval($userResponse)){
           $correct=true;
-          if (!Auth::guest()) {
-            $this->updateUserData($pid);
+          if (!Auth::guest()) { //User gets a correct answer and is logged in
+            $this->updateUserData($p);
           }
         }
         return view('problem')->with(['problem'=> $p,
@@ -129,9 +126,9 @@ class ProblemController extends Controller
 
   /*
    * Post a new comment to a problem's discussion board
-   *
-  */
-  public function postNewComment(Request $request, $category,$pid)
+   * Returns to originating problem view after submission
+   */
+  public function postNewComment(Request $request,$category,$pid)
   {
     $newComment = new Comment();
     $newComment->message = $request->input("comment-input");
@@ -142,23 +139,38 @@ class ProblemController extends Controller
   }
 
   /*
-   * Add id of new problem solved to user json data
-   * Should be using a pivot table here.
+   * Get list of Comment objects for the given problem id number.
   */
-  private function updateUserData($pid){
-    $data = Session::get('solved');
-    //make sure user hasn't already solved problem
-    if (!in_array($pid,$data)){
-      array_push($data,$pid);
-      Session::put('solved',$data);
-      //Update user experience points
-      $user = Auth::user();
-      $user->xp += 100;
-      $user->save();
-      $data = json_encode($data);
-      file_put_contents('json/'.$user->id.'.json', $data);
-    }
+  private function getCommentsByProblem($pid) {
+      return Problem::find($pid)->comments;
   }
 
+  /*
+   * Update user data after problem is solved.
+   * a) Updates the solved session var to include new pid
+   * b) Update the problem_user database to include user/problem pair
+   * c) Update the user's experience points
+   * $prob: Problem object solved by current user
+  */
+  private function updateUserData($prob){
+    $data = Session::get('solved'); //list of ids of solved problems
+    //make sure user hasn't already solved problem
+    if (!in_array($prob->id, $data)){
+      array_push($data,$prob->id);
+      Session::put('solved',$data); //update the problem id session list
+      //Update the Problem object session list (for home view output)
+      $pCollection= Session::get('problems_solved');
+      $pCollection->push($prob);
+      Session::put('problems_solved',$pCollection);
 
+      //Update the problem_user table
+      Auth::user()->problems()->save($prob);
+
+      //Update user experience points and problem count
+      $user = Auth::user();
+      $user->xp += $prob->xp;
+      $user->solved+=1;
+      $user->save();
+    }
+  }
 }

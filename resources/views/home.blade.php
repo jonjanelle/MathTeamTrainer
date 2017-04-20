@@ -35,7 +35,7 @@
               <td>{{$user->name}}</td>
               <td>{{$user->xp}}</td>
               <td>{{$user->solved}}</td>
-              <td>Algebra</td>
+              <td>{{isset($bestCat)?$bestCat:'N/A'}}</td>
             </tr>
           </tbody>
         </table>
@@ -61,7 +61,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ($user->problems as $index=>$problem)
+            @foreach ($solved as $index=>$problem)
               <tr>
                 <td>{{$index+1}}</td>
                 <td>{{$problem->category}}</td>

@@ -25,33 +25,55 @@ class HomeController extends Controller
      */
     public function index(){
       if (Auth::guest()) { return view('auth.login'); }
-      $user = Auth::user()->with('problems')->first();
-      $comments = User::find($user->id)->comments;
-      $solved = $this->getUserSolved($user->id);
+      $user = Auth::user();
+      $comments = $user->comments;
+      $solved = $this->getUserSolved($user);
       return view('home')->with(["user"=>$user,
                                  "solved"=>$solved,
-                                 "comments"=>$comments]);
+                                 "comments"=>$comments,
+                                 "bestCat"=>$this->findBestCategory($solved)]);
     }
 
     /*
-     * Get an array of all of the problems solved by user.
-     * Solved problems are stored in a json data file.
-     * If no data exists for the user, then a new file is created.
-     *
+     * $col is a Collection of Problems
+     * laravel.com/docs/5.4/collections
+     * Finds most common category in O(n)
+     * Returns String category name or null if no problems solved.
      */
-    public function getUserSolved($id){
-      if (file_exists('json/'.$id.'.json')){
-        $file = file_get_contents('json/'.$id.'.json');
-        $data = json_decode($file, true);
-        Session::put("solved",$data);
-        return $data;
+    private function findBestCategory($col) {
+      $cats = [];
+      $maxNum=0;
+      $maxCat=null;
+      for ($i=0; $i<count($col); $i++){
+        $current = $col[$i]->category;
+        if (array_key_exists($current,$cats)){
+          $cats[$current]+=1;
+        } else {
+          $cats[$current]=1;
+        }
+        //Set new max category if needed.
+        if ($cats[$current]>$maxNum){ $maxCat=$current; }
       }
-      else {
-        $newData = json_encode(array());
-        file_put_contents('json/'.$id.'.json', $newData);
-        Session::put("solved",array());
-        return array();
-      }
+      return $maxCat;
+    }
+    /*
+     * Get an array of all of the problems solved by user.
+     * User-problem pairs stored in problem_user pivot table
+     * Attempts to use data stored in session if possible rather than a db query
+     */
+    public function getUserSolved($user) {
+        if (Session::get('solved')==null){
+          $data = $user->problems;
+          $d = array();
+          for ($i=0; $i<count($data);$i++){
+            array_push($d, $data[$i]->id);
+          }
+          Session::put("solved",$d); //just the problem id numbers
+          Session::put("problems_solved",$data); //Problem objects
+          return $data;
+        }
+
+        return Session::get('problems_solved');
     }
 
 
