@@ -14,11 +14,10 @@
   </div>
 </div>
 <div class="panel panel-info" id="leaderboard">
-  <!-- Default panel contents -->
   <div class="panel-heading">
     Top Scorers
   </div>
-  <table class="table table-hover">
+  <table class="table table-hover table-striped">
     <thead class="thead-default">
       <tr>
         <th>#</th>

@@ -21,7 +21,7 @@
       <div class="panel panel-info shadow-transition" id="leaderboard">
         <!-- Default panel contents -->
         <div class="panel-heading">Account Overview</div>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
           <thead class="thead-default">
             <tr>
               <th>Alias</th>
@@ -50,7 +50,7 @@
       <div class="panel panel-info shadow-transition" id="leaderboard">
         <!-- Default panel contents -->
         <div class="panel-heading">Problem History</div>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
           <thead class="thead-default">
             <tr>
               <th>#</th>
@@ -83,7 +83,7 @@
       <div class="panel panel-info shadow-transition" id="leaderboard">
         <!-- Default panel contents -->
         <div class="panel-heading">Comment History</div>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped">
           <thead class="thead-default">
             <tr>
               <th>#</th>
