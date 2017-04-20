@@ -19,7 +19,7 @@ class CreateProblemsTable extends Migration
         $table->string('name');
         $table->string('category');
         $table->string('subcategory')->nullable();
-        $table->string('difficulty');
+        $table->integer('difficulty')->unsigned();
         $table->string('image');
         $table->double('answer', 15, 8);
         $table->integer('xp');
