@@ -82,6 +82,8 @@ class HomeController extends Controller
     */
     public function deleteComment($cid)
     {
+      //TODO Make sure that ownly comment owner can delete it!
+      
       Comment::destroy($cid);
       return $this->index();
     }

@@ -104,7 +104,7 @@
           </form>
         </div>
         @foreach($comments as $comment)
-          <div class="comment-box shadow-transition">
+          <div class="comment-box shadow-transition" id="c{{$comment->id}}">
             <div class="comment-author">{{$comment->user->name}}</div>
             <div class="comment-date">{{$comment->created_at}}</div>
             <div class="comment-message">{{$comment->message}}</div>

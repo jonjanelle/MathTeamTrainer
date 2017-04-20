@@ -112,7 +112,12 @@
             @foreach($comments as $index=>$comment)
               <tr>
                 <td>{{$index+1}}</td>
-                <td>{{$comment->message}}</td>
+                <td>
+                  <!--surprised that laravel knew how to handle this without me needing to parse the anchor.-->
+                  <a href="/problems/{{$comment->problem->category}}/problem/{{$comment->problem->id}}#c{{$comment->id}}">
+                    {{$comment->message}}
+                  </a>
+                </td>
                 <td>
                   <a href="/problems/{{$problem->category}}">
                     {{$comment->problem->category}}
