@@ -35,7 +35,13 @@
               <td>{{$user->name}}</td>
               <td>{{$user->xp}}</td>
               <td>{{$user->solved}}</td>
-              <td>{{isset($bestCat)?$bestCat:'N/A'}}</td>
+              <td>
+                @if(isset($bestCat))
+                  <a href="/problems/{{$bestCat}}">{{$bestCat}}</a>
+                @else
+                  N/A
+                @endif
+              </td>
             </tr>
           </tbody>
         </table>
@@ -64,8 +70,16 @@
             @foreach ($solved as $index=>$problem)
               <tr>
                 <td>{{$index+1}}</td>
-                <td>{{$problem->category}}</td>
-                <td>{{$problem->name}}</td>
+                <td>
+                  <a href="/problems/{{$problem->category}}">
+                    {{$problem->category}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/problems/{{$problem->category}}/problem/{{$problem->id}}">
+                    {{$problem->name}}
+                  </a>
+                </td>
                 <td>{{$problem->difficulty}}</td>
                 <td>{{$problem->xp}}</td>
               </tr>
@@ -98,8 +112,16 @@
               <tr>
                 <td>{{$index+1}}</td>
                 <td>{{$comment->message}}</td>
-                <td>{{$comment->problem->category}}</td>
-                <td>{{$comment->problem->name}}</td>
+                <td>
+                  <a href="/problems/{{$problem->category}}">
+                    {{$comment->problem->category}}
+                  </a>
+                </td>
+                <td>
+                  <a href="/problems/{{$comment->problem->category}}/problem/{{$comment->problem->id}}">
+                    {{$comment->problem->name}}
+                  </a>
+                </td>
                 <td>{{$comment->created_at}}</td>
               </tr>
             @endforeach
