@@ -14,6 +14,12 @@ form {
   border-radius: 8px;
 }
 
+@media (max-width: 1199px) {
+  .form-box{
+    max-width: 85vw;
+  }
+}
+
 .form-body {
   padding: 10px 25px 10px 25px;
 }
