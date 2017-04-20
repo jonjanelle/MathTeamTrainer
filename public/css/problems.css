@@ -71,6 +71,9 @@
   color: #fff;
 }
 
+#problem-title {
+  font-size: 2em;
+}
 
 .feedback-box{
   margin-top: 15px;
