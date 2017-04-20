@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "Math Team Trainer",
+    "description": "Math Team Trainer",
+    "keywords": ["math", "practice", "team", "trainer"],
     "license": "MIT",
     "type": "project",
     "require": {
