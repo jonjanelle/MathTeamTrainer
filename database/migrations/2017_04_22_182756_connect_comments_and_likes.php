@@ -13,6 +13,7 @@ class ConnectCommentsAndLikes extends Migration
      */
     public function up()
     {
+      //likes belong to a single comment
       Schema::table('likes', function (Blueprint $table) {
         $table->integer('comment_id')->unsigned();
         $table->foreign('comment_id')->references('id')->on('comments');

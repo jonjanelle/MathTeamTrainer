@@ -248,7 +248,7 @@ class ProblemsTableSeeder extends Seeder
     Problem::insert([
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'category'=>'Ratios',
+      'category'=>'Ratio',
       'name'=> 'Problem 1',
       'difficulty'=>1,
       'image'=>'/images/ratio/ratioP1.PNG',
@@ -259,7 +259,7 @@ class ProblemsTableSeeder extends Seeder
     Problem::insert([
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'category'=>'Ratios',
+      'category'=>'Ratio',
       'name'=> 'Problem 2',
       'difficulty'=>2,
       'image'=>'/images/ratio/ratioP2.PNG',
@@ -270,7 +270,7 @@ class ProblemsTableSeeder extends Seeder
     Problem::insert([
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'category'=>'Ratios',
+      'category'=>'Ratio',
       'name'=> 'Problem 3',
       'difficulty'=>3,
       'image'=>'/images/ratio/ratioP3.PNG',
@@ -281,7 +281,7 @@ class ProblemsTableSeeder extends Seeder
     Problem::insert([
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'category'=>'Ratios',
+      'category'=>'Ratio',
       'name'=> 'Problem 4',
       'difficulty'=>3,
       'image'=>'/images/ratio/ratioP4.PNG',
@@ -292,7 +292,7 @@ class ProblemsTableSeeder extends Seeder
     Problem::insert([
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'category'=>'Ratios',
+      'category'=>'Ratio',
       'name'=> 'Problem 5',
       'difficulty'=>8,
       'image'=>'/images/ratio/ratioP5.PNG',
@@ -303,7 +303,7 @@ class ProblemsTableSeeder extends Seeder
     Problem::insert([
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'category'=>'Ratios',
+      'category'=>'Ratio',
       'name'=> 'Problem 6',
       'difficulty'=>4,
       'image'=>'/images/ratio/ratioP6.PNG',
@@ -313,7 +313,11 @@ class ProblemsTableSeeder extends Seeder
 
   }
 
-  public function seqenceSeed() {
+  public function sequenceSeed() {
+
+  }
+
+  public function trigSeed() {
 
   }
 
@@ -328,5 +332,6 @@ class ProblemsTableSeeder extends Seeder
     $this->geomSeed();
     $this->ratioSeed();
     $this->sequenceSeed();
+    $this->trigSeed();
   }
 }

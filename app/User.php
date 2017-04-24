@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Problem;
+use App\Problem, App\Like;
 
 class User extends Authenticatable
 {
@@ -33,6 +33,10 @@ class User extends Authenticatable
      */
     public function comments() {
       return $this->hasMany('App\Comment')->orderBy('created_at', 'DESC');
+    }
+
+    public function likes() {
+      return $this->hasMany('App\Like')->orderBy('created_at', 'DESC');
     }
 
     public function problems() {

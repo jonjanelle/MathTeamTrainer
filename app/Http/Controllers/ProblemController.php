@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session, Auth;
-use App\Problem, App\User, App\Comment;
+use App\Problem, App\User, App\Comment, App\Like;
 
 
 class ProblemController extends Controller
@@ -56,6 +56,7 @@ class ProblemController extends Controller
     Session::put($category, $data);
   }
 
+
   /*
    * View a problem from a given $category with id $pid
    * if $feedback is true, then showing problem after an answer submit.
@@ -72,7 +73,7 @@ class ProblemController extends Controller
       $pData = Session::get($category);
       for ($i=0; $i<$pData->count(); $i++) {
         $p=$pData[$i];
-        //linear search for id (ids not necessarily ordered)
+        //search for problem by id
         if ($p->id==$pid){
           $prev = 'None';
           $next = 'None';
@@ -143,7 +144,32 @@ class ProblemController extends Controller
     $newComment->problem_id = $pid;
     $newComment->user_id = Auth::user()->id;
     $newComment->save();
-    return $this->show($category, $pid);
+    return redirect("/problems/".$category."/problem/".$pid);
+  }
+
+  public function likeComment($category,$pid,$cid,$dir){
+    /*Check if user has already liked/disliked comment, return if yes*/
+    $user=Auth::user();
+    $prevLikes = $user->likes;
+    for ($i=0; $i<$prevLikes->count(); $i++){
+      if ($prevLikes[$i]->comment_id==$cid){
+        return redirect("/problems/".$category."/problem/".$pid);
+      }
+    }
+
+    $c=Comment::find($cid);
+    if ($dir=='up'){
+      $c->likes +=1;
+    }
+    else if ($dir=='down') {
+      $c->dislikes+=1;
+    }
+    $c->save();
+    $newLike = new Like();
+    $newLike->user_id = $user->id;
+    $newLike->comment_id = $cid;
+    $newLike->save();
+    return redirect("/problems/".$category."/problem/".$pid);
   }
 
   /*
@@ -152,6 +178,7 @@ class ProblemController extends Controller
   private function getCommentsByProblem($pid) {
       return Problem::find($pid)->comments;
   }
+
 
   /*
    * Update user data after problem is solved.

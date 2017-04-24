@@ -13,6 +13,7 @@ class ConnectUsersAndLikes extends Migration
      */
     public function up()
     {
+      //likes belong to a single user
       Schema::table('likes', function (Blueprint $table) {
         $table->integer('user_id')->unsigned();
         $table->foreign('user_id')->references('id')->on('users');

@@ -113,3 +113,7 @@ th, tr, td{
   border: 1px solid #bbc;
   box-shadow: 3px 5px 20px 3px rgba(50,50,50,.7);
 }
+
+.panel-heading {
+  font-weight: bold;
+}
