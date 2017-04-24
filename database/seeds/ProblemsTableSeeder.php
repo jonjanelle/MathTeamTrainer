@@ -232,6 +232,89 @@ class ProblemsTableSeeder extends Seeder
       'answer'=> 20,
       'xp'=>250
     ]);
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Geometry',
+      'name'=> 'Problem 8',
+      'difficulty'=>8,
+      'image'=>'/images/geometry/geometryP9.PNG',
+      'answer'=> 12,
+      'xp'=>400
+    ]);
+  }
+
+  public function ratioSeed() {
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Ratios',
+      'name'=> 'Problem 1',
+      'difficulty'=>1,
+      'image'=>'/images/ratio/ratioP1.PNG',
+      'answer'=> 20,
+      'xp'=>50
+    ]);
+
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Ratios',
+      'name'=> 'Problem 2',
+      'difficulty'=>2,
+      'image'=>'/images/ratio/ratioP2.PNG',
+      'answer'=> 20,
+      'xp'=>100
+    ]);
+
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Ratios',
+      'name'=> 'Problem 3',
+      'difficulty'=>3,
+      'image'=>'/images/ratio/ratioP3.PNG',
+      'answer'=> 20,
+      'xp'=>100
+    ]);
+
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Ratios',
+      'name'=> 'Problem 4',
+      'difficulty'=>3,
+      'image'=>'/images/ratio/ratioP4.PNG',
+      'answer'=> 94,
+      'xp'=>150
+    ]);
+
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Ratios',
+      'name'=> 'Problem 5',
+      'difficulty'=>8,
+      'image'=>'/images/ratio/ratioP5.PNG',
+      'answer'=> 105,
+      'xp'=>400
+    ]);
+
+    Problem::insert([
+      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+      'category'=>'Ratios',
+      'name'=> 'Problem 6',
+      'difficulty'=>4,
+      'image'=>'/images/ratio/ratioP6.PNG',
+      'answer'=> 1.6,
+      'xp'=>200
+    ]);
+
+  }
+
+  public function seqenceSeed() {
+
   }
 
   /**
@@ -243,5 +326,7 @@ class ProblemsTableSeeder extends Seeder
   {
     $this->algebraSeed();
     $this->geomSeed();
+    $this->ratioSeed();
+    $this->sequenceSeed();
   }
 }

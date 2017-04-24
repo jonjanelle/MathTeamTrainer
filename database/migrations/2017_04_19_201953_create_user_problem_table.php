@@ -12,6 +12,7 @@ class CreateUserProblemTable extends Migration
      */
     public function up()
     {
+      //list table names in alphabetical order.
       Schema::create('problem_user', function (Blueprint $table) {
           $table->increments('id');
 
