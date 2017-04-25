@@ -236,7 +236,7 @@ class ProblemsTableSeeder extends Seeder
       'created_at' => Carbon\Carbon::now()->toDateTimeString(),
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
       'category'=>'Geometry',
-      'name'=> 'Problem 8',
+      'name'=> 'Problem 9',
       'difficulty'=>8,
       'image'=>'/images/geometry/geometryP9.PNG',
       'answer'=> 12,

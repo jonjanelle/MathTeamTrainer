@@ -157,18 +157,22 @@ class ProblemController extends Controller
       }
     }
 
-    $c=Comment::find($cid);
-    if ($dir=='up'){
-      $c->likes +=1;
-    }
-    else if ($dir=='down') {
-      $c->dislikes+=1;
-    }
-    $c->save();
     $newLike = new Like();
     $newLike->user_id = $user->id;
     $newLike->comment_id = $cid;
+
+    $c=Comment::find($cid);
+    if ($dir=='up'){
+      $c->likes +=1;
+      $newLike->rating=1;
+    }
+    else if ($dir=='down') {
+      $c->dislikes+=1;
+      $newLike->rating=-1;
+    }
+    $c->save();
     $newLike->save();
+
     return redirect("/problems/".$category."/problem/".$pid);
   }
 
