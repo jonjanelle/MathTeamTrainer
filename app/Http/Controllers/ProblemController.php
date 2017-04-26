@@ -144,9 +144,14 @@ class ProblemController extends Controller
     $newComment->problem_id = $pid;
     $newComment->user_id = Auth::user()->id;
     $newComment->save();
+
+    //return "test";
     return redirect("/problems/".$category."/problem/".$pid);
   }
 
+  /*
+   * Like a comment
+  */
   public function likeComment($category,$pid,$cid,$dir){
     /*Check if user has already liked/disliked comment, return if yes*/
     $user=Auth::user();
@@ -172,8 +177,8 @@ class ProblemController extends Controller
     }
     $c->save();
     $newLike->save();
-
-    return redirect("/problems/".$category."/problem/".$pid);
+    return $c;
+    //return encode_json([$c->likes, $c->dislikes]);
   }
 
   /*

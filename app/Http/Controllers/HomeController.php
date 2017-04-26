@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth, Session, App\User, App\Comment;
+use Auth, Session, App\User, App\Comment, App\Like;
 
 class HomeController extends Controller
 {
@@ -82,12 +82,15 @@ class HomeController extends Controller
     */
     public function deleteComment($cid)
     {
-      //Make sure that only owner can delete
+      //get Comment object
       $c = Comment::find($cid);
+      //only creator should be able to delete
       if ($c!=null && $c->user->id==Auth::user()->id) {
-        Comment::destroy($cid);
+        //need to destroy and likes associated with comment first.
+        $c-> likes()->delete();
+        //Then destroy the comment itself.
+        $c->delete();
       }
-      return $this->index();
+      //return $this->index(); //back home
     }
-
 }

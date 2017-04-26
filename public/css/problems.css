@@ -100,7 +100,14 @@
 .comment-vote {
   display:inline-block;
   margin-left: 5px;
+  color: #3366BB;
 }
+
+.comment-vote:hover{
+  cursor:pointer;
+  color: #2255AA;
+}
+
 .comment-author {
   float: left;
   padding-right: 10px;
@@ -139,6 +146,7 @@
 }
 #new-comment-toggle:hover{
   font-weight: bold;
+  cursor: pointer;
 }
 #new-comment-div {
   display: none;

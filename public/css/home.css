@@ -2,10 +2,24 @@
   margin: 3%;
 }
 
-
 .home-panel .panel-heading{
   font-weight: bold;
   width: auto;
+}
+
+.home-panel {
+  width: 100%;
+  min-height: 85px;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.home-comment-delete {
+  color: rgb(139,139,222);
+}
+.home-comment-delete:hover {
+  cursor: pointer;
+  color: #FF0000;
 }
 
 #leaderboard {
@@ -21,4 +35,8 @@
   font-size: 1.2em;
   letter-spacing: 3px;
   font-weight: bold;
+}
+
+#home-user-name:hover {
+  cursor: pointer;
 }

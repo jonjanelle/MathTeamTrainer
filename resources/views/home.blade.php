@@ -94,8 +94,7 @@
   <!--begin comment history section-->
   <div class="row">
     <div class="col col-md-12">
-      <div class="panel panel-info shadow-transition home-panel table-responsive">
-        <!-- Default panel contents -->
+      <div class="panel panel-info shadow-transition home-panel">
         <div class="panel-heading">Comment History</div>
         <table class="table table-hover table-striped">
           <thead class="thead-default">
@@ -110,7 +109,7 @@
           </thead>
           <tbody>
             @foreach($comments as $index=>$comment)
-              <tr>
+              <tr id="row{{$comment->id}}">
                 <td>{{$index+1}}</td>
                 <td>
                   <!--surprised that laravel knew how to handle this without me needing to parse the anchor.-->
@@ -119,7 +118,7 @@
                   </a>
                 </td>
                 <td>
-                  <a href="/problems/{{$problem->category}}">
+                  <a href="/problems/{{$comment->problem->category}}">
                     {{$comment->problem->category}}
                   </a>
                 </td>
@@ -129,9 +128,9 @@
                   </a>
                 </td>
                 <td>
-                  <a href="/home/deletecomment/{{$comment->id}}">
-                    <span class="glyphicon glyphicon-trash"></span>
-                  </a>
+                  <div onclick="deleteComment({{$comment->id}})">
+                    <span class="glyphicon glyphicon-trash home-comment-delete"></span>
+                  </div>
                 </td>
                 <td>{{$comment->created_at}}</td>
               </tr>
@@ -144,3 +143,6 @@
   <!--end comment history section-->
 </div>
 @endsection
+@push('body')
+  <script src="js\comments.js"></script>
+@endpush

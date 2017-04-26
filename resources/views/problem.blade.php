@@ -33,8 +33,11 @@
     <span class="glyphicon glyphicon-ok green-check"></span>
     @endif
   </div>
-</div> <!-- end header -->
-<div class="pad-20"><!-- begin problem display -->
+</div>
+<!-- end header -->
+
+<!-- begin problem display -->
+<div class="pad-20">
   <div class="img-box light-shadowbox">
     <img src="{{$problem->image}}" alt="problem image">
   </div>
@@ -77,8 +80,6 @@
         <label for="answer-input">Answer</label>
       </h3>
       <div class="input-group">
-
-
         <span class="input-group-addon" id="submit-addon1">
           <a href="#" data-toggle="tooltip" title="Required. Enter exact answer. Numeric answers will not exceed four decimal places.">
             <span class="glyphicon glyphicon-info-sign" id="input-tooltip"></span>
@@ -91,9 +92,10 @@
       </div>
     </form>
   </div>
-</div><!-- end problem display -->
+</div>
+<!-- end problem display -->
 
-<!--comment section will go below-->
+<!--begin comment section-->
 <div class="spacer-lg-top"></div>
 @if (Auth::guest())
 <div class="comment-header">
@@ -102,7 +104,7 @@
     Login to view the discussion board for this problem.
   </a>
 </div>
-@else
+@else <!--user logged in, show comments-->
 <div class="comment-container">
   <div class="comment-header">
     <span class="glyphicon glyphicon-comment"></span>
@@ -111,34 +113,40 @@
   <div id="new-comment-toggle">Post new comment</div>
   <div id="new-comment-div">
     <form method="POST" id="comment-form" action="/problems/{{$problem->category}}/problem/{{$problem->id}}/comment">
+    <!--
+    <form method="POST" id="comment-form" action="javascript:newComment('{{$problem->category}}',{{$problem->id}})">
+    -->
       {{ csrf_field() }}
       <div class="form-group">
-        <textarea rows="3" class="form-control" id="comment-input" name="comment-input" placeholder="Posts containing profanity, insults, or answers may be removed at the discretion of the moderator." required></textarea>
+        <textarea rows="3" class="form-control" id="commentInput" name="comment-input" placeholder="Posts containing profanity, insults, or answers are not allowed and will be removed." required></textarea>
         <input class="btn btn-primary" id="comment-submit" type="submit" value="Post">
       </div>
-
     </form>
   </div>
   @foreach($comments as $comment)
+  @include('master.commentbox')
+  <!--
   <div class="comment-box shadow-transition" id="c{{$comment->id}}">
     <div class="comment-author">{{$comment->user->name}}
       <div class="comment-vote">
-        <a href="/problems/{{$problem->category}}/problem/{{$problem->id}}/vote/{{$comment->id}}/up">
-          <span class="glyphicon glyphicon-thumbs-up">{{$comment->likes}}</span>
-        </a>
+        <div onclick="storeLike('{{$problem->category}}',{{$problem->id}},{{$comment->id}},'up')">
+          <span class="glyphicon glyphicon-thumbs-up" id="likes{{$comment->id}}">{{$comment->likes}}</span>
+        </div>
       </div>
       <div class="comment-vote">
-        <a href="/problems/{{$problem->category}}/problem/{{$problem->id}}/vote/{{$comment->id}}/down">
-          <span class="glyphicon glyphicon-thumbs-down">{{$comment->dislikes}}</span>
-        </a>
+        <div onclick="storeLike('{{$problem->category}}',{{$problem->id}},{{$comment->id}},'down')">
+          <span class="glyphicon glyphicon-thumbs-down" id="dislikes{{$comment->id}}">{{$comment->dislikes}}</span>
+        </div>
       </div>
     </div>
     <div class="comment-date">{{$comment->created_at}}</div>
     <div class="comment-message">{{$comment->message}}</div>
   </div>
+  -->
   @endforeach
 </div>
 @endif
+
 @endsection
 @push('body')
 <script type="text/javascript" src="/js/comments.js"></script>
