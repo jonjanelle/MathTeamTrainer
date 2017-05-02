@@ -44,16 +44,16 @@
 
   @if ($feedback)
   @if ($correct)
-  <div class="alert alert-success feedback-box" id="correctAns">
-    <button type="button" class="close" data-target="#correctAns" data-dismiss="alert">
+  <div class="alert alert-success feedback-box" id="correct-answer">
+    <button type="button" class="close" data-target="#correct-answer" data-dismiss="alert">
       <span aria-hidden="true">X</span>
     </button>
     {{$userAns}} is correct. Way to go!
   </div>
 
   @else
-  <div class="alert alert-danger feedback-box" id="incorrectAns">
-    <button type="button" class="close" data-target="#incorrectAns" data-dismiss="alert">
+  <div class="alert alert-danger feedback-box" id="incorrect-answer">
+    <button type="button" class="close" data-target="#incorrect-answer" data-dismiss="alert">
       <span aria-hidden="true">X</span>
     </button>
     {{$userAns}} is incorrect. Try again.
@@ -61,17 +61,18 @@
   @endif
   @endif
   @if (count($errors) > 0)
-  <div class="alert alert-danger feedback-box" id="incorrectAns">
-    <button type="button" class="close" data-target="#incorrectAns" data-dismiss="alert">
+  <div class="alert alert-danger feedback-box" id="error-box">
+    <button type="button" class="close" data-target="#ierror-box" data-dismiss="alert">
       <span aria-hidden="true">X</span>
     </button>
     <ul>
       @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
+        <li>{{ $error }}</li>
       @endforeach
     </ul>
   </div>
   @endif
+  
   <!-- begin problem answer input form -->
   <div class="answer-form-div">
     <form id="answer-form" method="POST" action="/problems/{{$problem->category}}/problem/{{$problem->id}}/check">

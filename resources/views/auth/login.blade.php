@@ -11,6 +11,7 @@
 
 @section('content')
   <div class="header">Math Team Trainer</div>
+  
   @if(Session::get('message') != null)
     <div class="alert alert-danger feedback-box" id="correctAns">
       <button type="button" class="close" data-target="#correctAns" data-dismiss="alert">
@@ -19,6 +20,7 @@
       {{Session::get('message')}}
     </div>
   @endif
+
   <div class="row">
     <div class="col col-md-6 col-md-push-6">
       @include('forms.loginform')

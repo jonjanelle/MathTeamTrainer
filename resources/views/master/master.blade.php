@@ -63,23 +63,17 @@
                       {{ csrf_field() }}
                     </form>
                   </li>
-
                 </ul>
               </li>
-            @endif
+            @endif 
           </ul>
         </div>
-      </div><!--/.container-fluid -->
+      </div>
     </nav>
 
-
-
     <div class="back-panel">
-
       @yield('content')
-
     </div>
-
 
     <script type="text/javascript" src="/js/login_effects.js"></script>
     @stack('body')

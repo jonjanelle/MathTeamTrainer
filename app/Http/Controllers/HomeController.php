@@ -56,6 +56,7 @@ class HomeController extends Controller
       }
       return $maxCat;
     }
+    
     /*
      * Get an array of all of the problems solved by user.
      * User-problem pairs stored in problem_user pivot table

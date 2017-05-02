@@ -23,7 +23,7 @@ class ProblemController extends Controller
 
     //Return home if category does not exist.
     if (count($pData)==0){
-      Session::flash('message','Sorry, no problems are available in the requested category.');
+      Session::flash("message","Sorry, no problems are available in the requested category.");
       return redirect('/');
     }
 
@@ -78,12 +78,6 @@ class ProblemController extends Controller
       //Get the comments for this problem if user is logged in
       $comments = Auth::guest()?null:$this->getCommentsByProblem($pid);
 
-      //If comments null and logged in, then an invalid problem requested
-      if (!Auth::guest() && $comments == null){
-        Session::flash("message", "The requested problem was not found!");
-        return redirect("/problems/".$category);
-      }
-
       //search for problem by id in data from session
       for ($i=0; $i<$pData->count(); $i++) {
         $p=$pData[$i];
@@ -108,6 +102,10 @@ class ProblemController extends Controller
                                         'solved'=>$solved]);
         }
       }
+      
+      //If here, then the problem was not found.
+      Session::flash("message", "The requested problem was not found!");
+      return redirect("/problems/".$category);
   }
 
   /*
