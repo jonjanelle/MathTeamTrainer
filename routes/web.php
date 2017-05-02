@@ -10,12 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 //root route -> to dashboard or login page
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/home/deletecomment/{cid}','HomeController@deleteComment');
-
-Auth::routes();
+Route::get('/newproblem','AdminController@index');
+Route::post('/newproblem/submit','AdminController@addProblem');
 
 /*view main problem listing for a given category*/
 Route::get('/problems/{category}','ProblemController@index');

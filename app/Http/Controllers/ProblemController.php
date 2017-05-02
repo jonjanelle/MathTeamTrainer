@@ -20,6 +20,13 @@ class ProblemController extends Controller
       $this->loadProblemData($category,$sortCat,$sortOrder);
     }
     $pData = Session::get($category);
+
+    //Return home if category does not exist.
+    if (count($pData)==0){
+      Session::flash('message','Sorry, no problems are available in the requested category.');
+      return redirect('/');
+    }
+
     $solved = [];
     //Get list of solved problems if user is not a guest
     if (!Auth::guest()) { $solved = Session::get('solved');}
@@ -65,20 +72,27 @@ class ProblemController extends Controller
       if (!Session::has($category)) { //load problem data if needed
         $this->loadProblemData($category);
       }
+      //Retrieve problem data from session
+      $pData = Session::get($category);
 
-      //Get the comment board for this problem if user is logged in
+      //Get the comments for this problem if user is logged in
       $comments = Auth::guest()?null:$this->getCommentsByProblem($pid);
 
-      //Retrieve data from session (rather than querying db again.)
-      $pData = Session::get($category);
+      //If comments null and logged in, then an invalid problem requested
+      if (!Auth::guest() && $comments == null){
+        Session::flash("message", "The requested problem was not found!");
+        return redirect("/problems/".$category);
+      }
+
+      //search for problem by id in data from session
       for ($i=0; $i<$pData->count(); $i++) {
         $p=$pData[$i];
-        //search for problem by id
-        if ($p->id==$pid){
+        if ($p->id==$pid){ //Problem found if true
           $prev = 'None';
           $next = 'None';
           if ($i>0) { $prev=$pData[$i-1]->id; }
           if ($i<$pData->count()-1) { $next=$pData[$i+1]->id; }
+          //Get list of problems solved by current user
           $solved = [];
           if (!Auth::guest()) { $solved = Session::get('solved');}
 
@@ -94,10 +108,6 @@ class ProblemController extends Controller
                                         'solved'=>$solved]);
         }
       }
-
-      //If requested problem not found, then go to listing page for category.
-      return view('problemlist')->with(['problems'=>$pData,
-                                        'category'=>$category]);
   }
 
   /*
@@ -185,7 +195,12 @@ class ProblemController extends Controller
    * Get list of Comment objects for the given problem id number.
   */
   private function getCommentsByProblem($pid) {
-      return Problem::find($pid)->comments;
+      $p = Problem::find($pid);
+      if ($p!=null) {
+        return Problem::find($pid)->comments;
+      } else {
+        return null;
+      }
   }
 
 

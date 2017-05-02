@@ -18,6 +18,14 @@
       @endif
     </div>
   </div>
+  @if(Session::get('message') != null)
+    <div class="alert alert-danger feedback-box" id="correctAns">
+      <button type="button" class="close" data-target="#correctAns" data-dismiss="alert">
+        <span aria-hidden="true">X</span>
+      </button>
+      {{Session::get('message')}}
+    </div>
+  @endif
   <div class="pad-20">
     <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort by

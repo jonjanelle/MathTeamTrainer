@@ -43,8 +43,6 @@
                 <li><a href="/problems/Algebra">Algebra</a></li>
                 <li><a href="/problems/Geometry">Geometry</a></li>
                 <li><a href="/problems/Ratio">Ratio and Proportion</a></li>
-                <li><a href="/problems/Sequences">Sequences and Series</a></li>
-                <li><a href="/problems/Trig">Trigonometry</a></li>
               </ul>
             </li><!--end dropdown-->
             <li><a href="/leaderboard">Leaderboard</a></li>
@@ -54,6 +52,9 @@
                   {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="/newproblem">Add problem</a>
+                  </li>
                   <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       Logout

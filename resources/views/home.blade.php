@@ -15,6 +15,14 @@
 </div>
 <!--end header bar-->
 <div class="home-container">
+  @if(Session::get('message') != null)
+    <div class="alert alert-danger feedback-box" id="correctAns">
+      <button type="button" class="close" data-target="#correctAns" data-dismiss="alert">
+        <span aria-hidden="true">X</span>
+      </button>
+      {{Session::get('message')}}
+    </div>
+  @endif
   <!--begin account summary section-->
   <div class="row">
     <div class="col col-md-12">
