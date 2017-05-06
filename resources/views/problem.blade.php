@@ -72,7 +72,7 @@
     </ul>
   </div>
   @endif
-  
+
   <!-- begin problem answer input form -->
   <div class="answer-form-div">
     <form id="answer-form" method="POST" action="/problems/{{$problem->category}}/problem/{{$problem->id}}/check">
@@ -86,7 +86,7 @@
             <span class="glyphicon glyphicon-info-sign" id="input-tooltip"></span>
           </a>
         </span>
-        <input type="text" class="form-control" id="answer-input" name="answer-input" aria-describedby="submit-addon1" required="true">
+        <input type="text" class="form-control" id="answer-input" name="answer-input" aria-describedby="submit-addon1" required>
       </div>
       <div class="spacer-sm">
         <input class="btn btn-primary" type="submit" value="Submit">
