@@ -18,6 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name'); //Name is user's alias
             $table->string('email')->unique();
             $table->string('password');
+            //XP and Solved count could be found from the problem_user pivot,
+            //but are included here to avoid needing to count each login.
             $table->integer('xp')->default(0); //experience points
             $table->integer('solved')->default(0); //# of problems solved
             $table->rememberToken();

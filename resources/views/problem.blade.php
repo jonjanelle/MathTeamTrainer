@@ -67,7 +67,7 @@
     </button>
     <ul>
       @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+      <li>{{ $error }}</li>
       @endforeach
     </ul>
   </div>
@@ -114,9 +114,6 @@
   <div id="new-comment-toggle">Post new comment</div>
   <div id="new-comment-div">
     <form method="POST" id="comment-form" action="/problems/{{$problem->category}}/problem/{{$problem->id}}/comment">
-    <!--
-    <form method="POST" id="comment-form" action="javascript:newComment('{{$problem->category}}',{{$problem->id}})">
-    -->
       {{ csrf_field() }}
       <div class="form-group">
         <textarea rows="3" class="form-control" id="commentInput" name="comment-input" placeholder="Posts containing profanity, insults, or answers are not allowed and will be removed." required></textarea>
@@ -126,29 +123,11 @@
   </div>
   @foreach($comments as $comment)
   @include('master.commentbox')
-  <!--
-  <div class="comment-box shadow-transition" id="c{{$comment->id}}">
-    <div class="comment-author">{{$comment->user->name}}
-      <div class="comment-vote">
-        <div onclick="storeLike('{{$problem->category}}',{{$problem->id}},{{$comment->id}},'up')">
-          <span class="glyphicon glyphicon-thumbs-up" id="likes{{$comment->id}}">{{$comment->likes}}</span>
-        </div>
-      </div>
-      <div class="comment-vote">
-        <div onclick="storeLike('{{$problem->category}}',{{$problem->id}},{{$comment->id}},'down')">
-          <span class="glyphicon glyphicon-thumbs-down" id="dislikes{{$comment->id}}">{{$comment->dislikes}}</span>
-        </div>
-      </div>
-    </div>
-    <div class="comment-date">{{$comment->created_at}}</div>
-    <div class="comment-message">{{$comment->message}}</div>
-  </div>
-  -->
   @endforeach
 </div>
 @endif
 
 @endsection
 @push('body')
-<script type="text/javascript" src="/js/comments.js"></script>
+  <script type="text/javascript" src="/js/comments.js"></script>
 @endpush

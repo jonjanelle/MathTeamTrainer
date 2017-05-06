@@ -29,7 +29,6 @@ Route::get('/leaderboard','LeaderboardController@index');
 Route::get('/problems/{category}/problem/{pid}','ProblemController@show'); //pid = problem id
 
 /*Process user answer form */
-Route::get('/problems/{category}/problem/{pid}/check','ProblemController@checkResponse');
 Route::post('/problems/{category}/problem/{pid}/check','ProblemController@checkResponse');
 
 /*Comment board related*/

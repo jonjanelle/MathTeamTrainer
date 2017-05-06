@@ -23,8 +23,8 @@ class ProblemController extends Controller
 
     //Return home if category does not exist.
     if (count($pData)==0){
-      //Session::flash("message","Sorry, no problems are available in the requested category.");
-      return redirect('/')->with("message","Sorry, no problems are available in the requested category.");
+      Session::flash("message","Sorry, no problems are available in the requested category.");
+      return redirect('/');
     }
 
     $solved = [];
@@ -81,7 +81,7 @@ class ProblemController extends Controller
       for ($i=0; $i<$pData->count(); $i++) {
         $p=$pData[$i];
         if ($p->id==$pid){ //Problem found if true
-          $prev = 'None';
+          $prev = 'None'; //Set previous and next problem from current
           $next = 'None';
           if ($i>0) { $prev=$pData[$i-1]->id; }
           if ($i<$pData->count()-1) { $next=$pData[$i+1]->id; }
@@ -91,7 +91,6 @@ class ProblemController extends Controller
 
           return view('problem')->with(['problem'=>$p,
                                         'category'=>$category,
-                                        'feedback'=>false,
                                         'next'=>$next,
                                         'prev'=>$prev,
                                         'comments'=>$comments,
@@ -151,7 +150,6 @@ class ProblemController extends Controller
     $newComment->user_id = Auth::user()->id;
     $newComment->save();
 
-    //return "test";
     return redirect("/problems/".$category."/problem/".$pid);
   }
 
@@ -184,7 +182,6 @@ class ProblemController extends Controller
     $c->save();
     $newLike->save();
     return $c;
-    //return encode_json([$c->likes, $c->dislikes]);
   }
 
   /*

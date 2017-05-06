@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         //to user_ids and problem_ids
         $this->call(CommentsTableSeeder::class);
         $this->call(ProblemUserTableSeeder::class);
+        $this->call(LikesTableSeeder::class);
 
     }
 }

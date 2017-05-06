@@ -17,7 +17,7 @@ class ProblemsTableSeeder extends Seeder
     $this->geomSeed();
     $this->ratioSeed();
   }
-  
+
   public function algebraSeed()
   {
     Problem::insert([
@@ -263,7 +263,7 @@ class ProblemsTableSeeder extends Seeder
       'name'=> 'Problem 1',
       'difficulty'=>1,
       'image'=>'/images/ratio/ratioP1.PNG',
-      'answer'=> 20,
+      'answer'=> 225,
       'xp'=>50
     ]);
 
@@ -274,7 +274,7 @@ class ProblemsTableSeeder extends Seeder
       'name'=> 'Problem 2',
       'difficulty'=>2,
       'image'=>'/images/ratio/ratioP2.PNG',
-      'answer'=> 20,
+      'answer'=> 1.50,
       'xp'=>100
     ]);
 
@@ -283,9 +283,9 @@ class ProblemsTableSeeder extends Seeder
       'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
       'category'=>'Ratio',
       'name'=> 'Problem 3',
-      'difficulty'=>3,
+      'difficulty'=>2,
       'image'=>'/images/ratio/ratioP3.PNG',
-      'answer'=> 20,
+      'answer'=> 4,
       'xp'=>100
     ]);
 

@@ -20,6 +20,10 @@ class Comment extends Model
   public function likes() {
     return $this->hasMany('App\Like')->orderBy('created_at', 'DESC');
   }
+
+  public function numLikes() {
+    
+  }
   /*
     Comment also belongs to Problem
     Define an inverse one-to-many relationship.

@@ -12,22 +12,23 @@ class ProblemUserTableSeeder extends Seeder
      */
      public function run()
      {
-       # Key is a user id, value is an array of problem ids
+       // Key is a user id, value is an array of problem ids
        $users =[
            1 => [1,2,3,7,8],
-           4 => [1]
+           2 => [5, 2, 9],
+           4 => [1, 2]
        ];
 
-       # Now loop through the above array, creating a new pivot for each book to tag
+       //creating a new pivot for each problem
        foreach($users as $uid => $problems) {
-           # First get the user
+           // get user
            $user = User::where('id','=',$uid)->first();
 
-           #loop through each problem for user, adding the pivot
+           //loop through each problem for user, adding the pivot
            foreach($problems as $pid) {
                $p = Problem::where('id','=',$pid)->first();
 
-               # Connect this problem to user
+              //Connect this problem to user
                $user->problems()->save($p);
            }
        }

@@ -15,8 +15,19 @@ class CommentsTableSeeder extends Seeder
       Comment::insert([
         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+        'message'=> 'I am the first message!',
+        'problem_id'=>1,
+        'likes'=>1,
+        'dislikes'=>2,
+        'user_id'=>1
+      ]);
+
+      Comment::insert([
+        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
         'message'=> 'I am the second message!',
         'problem_id'=>2,
+        'dislikes'=>1,
         'user_id'=>1
       ]);
 
@@ -31,16 +42,9 @@ class CommentsTableSeeder extends Seeder
       Comment::insert([
         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-        'message'=> 'I am the first message!',
-        'problem_id'=>1,
-        'user_id'=>1
-      ]);
-
-      Comment::insert([
-        'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-        'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
         'message'=> 'I am the BEST message!',
         'problem_id'=>2,
+        'likes'=>2,
         'user_id'=>2
       ]);
 
