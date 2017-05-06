@@ -6,7 +6,18 @@ use App\Problem;
 class ProblemsTableSeeder extends Seeder
 {
 
-
+  /**
+  * Run the database seeds.
+  *
+  * @return void
+  */
+  public function run()
+  {
+    $this->algebraSeed();
+    $this->geomSeed();
+    $this->ratioSeed();
+  }
+  
   public function algebraSeed()
   {
     Problem::insert([
@@ -311,27 +322,5 @@ class ProblemsTableSeeder extends Seeder
       'xp'=>200
     ]);
 
-  }
-
-  public function sequenceSeed() {
-
-  }
-
-  public function trigSeed() {
-
-  }
-
-  /**
-  * Run the database seeds.
-  *
-  * @return void
-  */
-  public function run()
-  {
-    $this->algebraSeed();
-    $this->geomSeed();
-    $this->ratioSeed();
-    $this->sequenceSeed();
-    $this->trigSeed();
   }
 }
