@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"><img src="/images/MTT logo.PNG" alt="Math Team Trainer Logo"></a>
+          <a class="navbar-brand" href="/"><img src="/images/MTT_logo.PNG" alt="Math Team Trainer Logo"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -53,9 +53,6 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="/newproblem">Add problem</a>
-                  </li>
-                  <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       Logout
                     </a>
@@ -65,7 +62,7 @@
                   </li>
                 </ul>
               </li>
-            @endif 
+            @endif
           </ul>
         </div>
       </div>

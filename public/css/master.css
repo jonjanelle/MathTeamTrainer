@@ -1,32 +1,11 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);/*!
-/* fonts downloaded from dafont.com */
+
+/* Makisupa font downloaded from dafont.com */
 @font-face {
     font-family: 'Makisupa';
     src: url("/fonts/MAKISUPA.TTF");
 }
 
-
-@font-face {
-    font-family: 'MathBoredom';
-    font-weight: normal;
-    src: url("/fonts/Mathematics Boredom.ttf");
-}
-
-@font-face {
-    font-family: 'ShoesCenter';
-    font-weight: normal;
-    src: url("/fonts/Shoes center.ttf");
-}
-
-@font-face {
-    font-family: 'Bebas';
-    src: url("/fonts/BEBAS.TTF");
-}
-
-@font-face {
-  font-family: 'CalculusSans';
-  src: url("/fonts/CalculusSans.ttf");
-}
 
 body {
   background-image: url("/images/bg10.png");

@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-user"></span> Login
   </div>
   <div class=form-body>
-    <form method="POST" role="form" method="POST" action="{{ route('login') }}">
+    <form method="POST" role="form" action="{{ route('login') }}">
       {{ csrf_field() }}
       <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
         <label for="email-input">Email address</label>

@@ -23,8 +23,8 @@ class ProblemController extends Controller
 
     //Return home if category does not exist.
     if (count($pData)==0){
-      Session::flash("message","Sorry, no problems are available in the requested category.");
-      return redirect('/');
+      //Session::flash("message","Sorry, no problems are available in the requested category.");
+      return redirect('/')->with("message","Sorry, no problems are available in the requested category.");
     }
 
     $solved = [];
@@ -54,7 +54,6 @@ class ProblemController extends Controller
    * $order - Order (ASC or DESC) in which results are sorted.
    */
   private static function loadProblemData($category, $sortCat="id",$order="asc"){
-    //$data=DB::table('problems')->where('category', $category)->orderBy($sortCat, $order)->get();
     $data = Problem::where('category','=',$category)
                      ->orderBy($sortCat, $order)
                      ->get();
@@ -102,7 +101,6 @@ class ProblemController extends Controller
                                         'solved'=>$solved]);
         }
       }
-      
       //If here, then the problem was not found.
       Session::flash("message", "The requested problem was not found!");
       return redirect("/problems/".$category);

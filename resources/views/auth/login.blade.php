@@ -11,7 +11,7 @@
 
 @section('content')
   <div class="header">Math Team Trainer</div>
-  
+
   @if(Session::get('message') != null)
     <div class="alert alert-danger feedback-box" id="correctAns">
       <button type="button" class="close" data-target="#correctAns" data-dismiss="alert">
@@ -35,9 +35,9 @@
       </div>
       <div class ="carousel-div">
         <div class="carousel">
-          <div><img src="\images\carousel1.jpg" alt="image 1"></div>
-          <div><img src="\images\carousel2.jpg" alt="image 2"></div>
-          <div><img src="\images\carousel3.jpg" alt="image 3"></div>
+          <div><img src="/images/carousel1.jpg" alt="image 1"></div>
+          <div><img src="/images/carousel2.jpg" alt="image 2"></div>
+          <div><img src="/images/carousel3.jpg" alt="image 3"></div>
         </div>
       </div>
     </div>
